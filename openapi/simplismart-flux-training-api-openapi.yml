@@ -1,0 +1,311 @@
+openapi: 3.1.0
+info:
+  title: DeepSeek R1 Distil Qwen-32B Chat Completion Flux Training API
+  description: High-capacity LLM for complex tasks
+  version: 1.0.0
+servers:
+- url: https://api.simplismart.live
+  description: DeepSeek-R1-Distill-Qwen-32B Proxy Server
+security:
+- BearerAuth: []
+tags:
+- name: Flux Training
+  description: Flux model training endpoints
+paths:
+  /api/flux/train/:
+    post:
+      tags:
+      - Flux Training
+      summary: Start a new Flux training job
+      description: Submit a new Flux training job with the specified configuration, training data, and metadata.
+      operationId: startFluxTrainingJob
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        required: true
+        description: Bearer token for authentication and authorization.
+        example: Bearer <ACCESS_TOKEN>
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                trigger_word:
+                  type: string
+                  description: The trigger word to be associated with generated images.
+                  example: portrait of a person
+                rank:
+                  type: string
+                  description: The rank parameter for training.
+                  example: '128'
+                steps:
+                  type: string
+                  description: Number of training steps.
+                  example: '1000'
+                lr:
+                  type: string
+                  description: Learning rate for training.
+                  example: '0.0001'
+                optimizers:
+                  type: string
+                  description: Optimizer to use for training.
+                  example: Adam
+                high_resolution_mode:
+                  type: string
+                  description: Whether to enable high resolution mode.
+                  example: 'false'
+                org:
+                  type: string
+                  description: Organization ID associated with the training job.
+                  example: 0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d
+                dataset_file:
+                  type: string
+                  format: binary
+                  description: Dataset file containing training images.
+                name:
+                  type: string
+                  description: Name assigned to the Flux training job.
+                  example: my_first_flux_job
+              required:
+              - trigger_word
+              - dataset_file
+              - org
+              - name
+      responses:
+        '200':
+          description: Flux training job submitted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FluxTrainingJobResponse'
+  /api/flux/training_job/list/:
+    get:
+      tags:
+      - Flux Training
+      summary: Retrieve a list of all Flux training jobs
+      description: Fetches a list of all Flux training jobs associated with the specified organization. Each job includes details such as its ID, name, status, and other metadata.
+      operationId: listFluxTrainingJobs
+      parameters:
+      - in: query
+        name: org_id
+        schema:
+          type: string
+        required: true
+        description: The unique identifier of the organization for which the training jobs are being retrieved.
+        example: 0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        required: true
+        description: The authorization token used to authenticate the request. It must be provided in the "Bearer {token}" format.
+        example: Bearer <ACCESS_TOKEN>
+      responses:
+        '200':
+          description: Successful response containing a list of Flux training jobs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFluxTrainingJobsResponse'
+        '400':
+          description: Invalid request, such as missing or incorrect parameters.
+        '401':
+          description: Unauthorized access due to invalid or missing authorization token.
+        '500':
+          description: Internal server error while retrieving the training jobs.
+  /api/flux/training_job/get/:
+    get:
+      tags:
+      - Flux Training
+      summary: Retrieve details of a specific Flux training job
+      description: Fetch metadata and configuration details of a Flux training job identified by the provided lora_id and org_id.
+      operationId: getFluxTrainingJob
+      parameters:
+      - in: query
+        name: org_id
+        schema:
+          type: string
+        required: true
+        description: Organization ID to which the training job belongs.
+        example: 0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d
+      - in: query
+        name: lora_id
+        schema:
+          type: string
+        required: true
+        description: Unique identifier for the Flux training job.
+        example: 3fe92c25-e5fd-4281-93df-5aa886064dbd
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        required: true
+        description: Bearer token for authentication and authorization.
+        example: Bearer <ACCESS_TOKEN>
+      responses:
+        '200':
+          description: The requested Flux training job details were retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFluxTrainingJobResponse'
+  /api/flux/training_job/get/mlflow-metrics/:
+    get:
+      tags:
+      - Flux Training
+      summary: Retrieve Flux training metrics
+      description: This endpoint allows you to fetch performance metrics for a specific Flux training job. Metrics include training loss and other relevant statistics logged during the training process.
+      operationId: getFluxTrainingMetrics
+      parameters:
+      - in: query
+        name: org_id
+        schema:
+          type: string
+        required: true
+        description: The unique identifier of the organization for which the metrics are being requested.
+        example: 0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d
+      - in: query
+        name: request_id
+        schema:
+          type: string
+        required: true
+        description: A unique identifier corresponding to the training job whose metrics are being fetched.
+        example: c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        required: true
+        description: The authorization token used to authenticate the request. It should be provided in the "Bearer {token}" format.
+        example: Bearer <ACCESS_TOKEN>
+      responses:
+        '200':
+          description: Successful response containing the requested metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FluxMlflowMetricsResponse'
+        '400':
+          description: Invalid request, such as missing or incorrect parameters.
+        '401':
+          description: Unauthorized access due to invalid or missing authorization token.
+        '404':
+          description: Training job or metrics not found for the provided request_id and org_id.
+        '500':
+          description: Internal server error while retrieving the metrics.
+components:
+  schemas:
+    FluxTrainingJobSummary:
+      type: object
+      properties:
+        lora_id:
+          type: string
+          description: Unique identifier for the Flux training job
+        name:
+          type: string
+          description: Name of the Flux training experiment
+        status:
+          type: string
+          description: Current status of the training job
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELED
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created
+        trigger_word:
+          type: string
+          description: The trigger word associated with generated images
+        steps:
+          type: string
+          description: Number of training steps configured
+    FluxMetricEntry:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Name of the metric
+        value:
+          type: number
+          description: Value of the metric
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the metric was recorded
+        step:
+          type: integer
+          description: Training step at which the metric was recorded
+    FluxTrainingJobResponse:
+      type: object
+      properties:
+        lora_id:
+          type: string
+          description: Unique identifier for the Flux training job
+        status:
+          type: string
+          description: Initial status of the training job
+        message:
+          type: string
+          description: Additional information about the job submission
+    GetFluxTrainingJobResponse:
+      type: object
+      properties:
+        lora_id:
+          type: string
+          description: Unique identifier for the Flux training job
+        name:
+          type: string
+          description: Name of the Flux training experiment
+        status:
+          type: string
+          description: Current status of the training job
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created
+        config:
+          type: object
+          description: The complete training configuration used for this job
+        progress:
+          type: number
+          description: Progress percentage of the training job (0-100)
+        trigger_word:
+          type: string
+          description: The trigger word associated with this model
+        steps:
+          type: string
+          description: Number of training steps configured
+        learning_rate:
+          type: string
+          description: Learning rate used for training
+        output_model:
+          type: string
+          description: Path to the trained model output (when completed)
+    ListFluxTrainingJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/FluxTrainingJobSummary'
+    FluxMlflowMetricsResponse:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/FluxMetricEntry'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication

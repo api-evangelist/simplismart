@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: DeepSeek R1 Distil Qwen-32B Chat Completion Model API
+  description: High-capacity LLM for complex tasks
+  version: 1.0.0
+servers:
+- url: https://api.simplismart.live
+  description: DeepSeek-R1-Distill-Qwen-32B Proxy Server
+security:
+- BearerAuth: []
+tags:
+- name: Model
+paths:
+  /model/infer/flux:
+    post:
+      summary: Generate images using the Flux model
+      description: 'This endpoint generates images based on a prompt using the Flux model, with optional parameters for customization.
+
+        '
+      operationId: generateImage
+      parameters:
+      - in: header
+        name: Authorization
+        description: Bearer token for authentication
+        required: true
+        schema:
+          type: string
+          example: 'Bearer '
+      - in: body
+        name: body
+        description: Request body for generating an image
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: "The prompt parameter is a string that defines the content or concept the Flux model should generate. \nIt specifies the desired characteristics, theme, or scene of the image, guiding the model to produce a \nrelevant output based on the input description.\n"
+                  example: Futuristic city skyline, magnificent crystal clear picture. realistic skyscrapers
+                height:
+                  type: integer
+                  description: Height of the generated image in pixels.
+                  example: 1024
+                width:
+                  type: integer
+                  description: Width of the generated image in pixels.
+                  example: 1024
+                seed:
+                  type: integer
+                  description: "The seed parameter is a random number that ensures reproducibility, producing the same output for \nidentical inputs across multiple runs.\n"
+                  example: 129232030
+                num_inference_steps:
+                  type: integer
+                  description: "The Num_Inference_Steps parameter determines the number of iterations the model performs during image \ngeneration, with more steps improving image quality at the cost of increased processing time. \nThe recommended number is 28.\n"
+                  example: 28
+                num_images_per_prompt:
+                  type: integer
+                  description: "The Num_images_per_prompt specifies the number of images the API should generate for a given input prompt. \nEach prompt can be associated with one or more images, depending on the value set for this parameter.\n"
+                  example: 1
+                guidance_scale:
+                  type: number
+                  format: float
+                  description: "The guidance_scale controls how closely the model follows the input prompt. Higher values make the image stick \nmore closely to the prompt, while lower values allow for more creative freedom. \nThe recommended number is 3.\n"
+                  example: 3
+                negative_prompt:
+                  type: string
+                  description: Optional negative prompt to influence the model's generation.
+                  example: dystopian
+                controlnet_type:
+                  type: string
+                  description: ControlNet type for additional model control.
+                  example: depth
+                image:
+                  type: string
+                  description: URL of an input image to use for additional processing.
+                  example: https://test-bucket-invideo.s3.ap-south-1.
+                lora_weights:
+                  type: string
+                  description: "The lora_weights parameter points to the file containing the learned LoRA weights. Add the PublicURL of the LoRA weights \nobtained from the Simplismart Training Suite.\n"
+                  example: https://example.com/lora-weights
+                lora_scale:
+                  type: number
+                  format: float
+                  description: 'The lora_scale is set to 1, meaning the LoRA weights will have a full impact on adjusting the model.
+
+                    '
+                  example: 1.0
+      responses:
+        '200':
+          description: Successfully generated images
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Request status
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      description: URL of the generated image
+                      example: https://example.com/generated_image.png
+        '400':
+          description: Bad request, invalid parameters
+        '401':
+          description: Unauthorized, invalid or missing authentication
+        '500':
+          description: Internal server error
+      tags:
+      - Model
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication
