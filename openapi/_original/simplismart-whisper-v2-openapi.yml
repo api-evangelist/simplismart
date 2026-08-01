@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: Whisper Large V2 API
+  description: Enhanced multilingual speech transcription and translation model
+  version: 1.0.0
+servers:
+  - url: https://http.whisper.proxy.prod.s9t.link
+    description: Production server
+paths:
+  /model/v2/infer/whisper:
+    post:
+      tags:
+        - Speech to Text
+      summary: Transcribe or translate audio using Whisper Large V2
+      description: >-
+        Process audio files for transcription or translation with advanced
+        options
+      operationId: transcribeAudioV2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WhisperV2Request'
+            example:
+              audio_data: base64_encoded_audio_content
+              language: en
+              task: transcribe
+              beam_size: 5
+              best_of: 5
+              word_timestamps: 1
+              diarization: 0
+              streaming: 0
+              batch_size: 24
+              length_penalty: 1
+              patience: 1
+              vad_onset: 0.5
+              vad_offset: 0.363
+      responses:
+        '200':
+          description: Successful transcription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhisperV2Response'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Invalid token
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    WhisperV2Request:
+      type: object
+      required:
+        - audio_data
+        - language
+        - task
+      properties:
+        audio_data:
+          type: string
+          description: >-
+            TEXT FIELD: This is a string field (not a file upload). Provide the
+            audio as a base64-encoded string. First convert your audio file
+            (.mp3, .wav, .flac) to base64, then paste the resulting string here.
+        language:
+          type: string
+          description: Language code (e.g. 'en' for English)
+          example: en
+        task:
+          type: string
+          enum:
+            - transcribe
+            - translate
+          description: Task type - transcribe in source language or translate to English
+          example: transcribe
+        initial_prompt:
+          type: string
+          description: Optional starting text prompt for context
+        beam_size:
+          type: integer
+          description: Number of parallel sequences evaluated
+          minimum: 1
+          maximum: 5
+          default: 5
+        best_of:
+          type: integer
+          description: Number of best sequences considered
+          minimum: 1
+          maximum: 5
+          default: 5
+        word_timestamps:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Include word-level timestamps (0=false, 1=true)
+          default: 0
+        diarization:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Enable speaker diarization (0=false, 1=true)
+          default: 0
+        vad_filter:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Enable voice activity detection filter (0=false, 1=true)
+          default: 1
+        without_timestamps:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Exclude timestamps from output (0=false, 1=true)
+          default: 0
+        streaming:
+          type: integer
+          enum:
+            - 0
+            - 1
+          description: Enable streaming output (0=false, 1=true)
+          default: 0
+        min_speakers:
+          type: number
+          description: Minimum number of speakers to detect
+          default: 0
+        max_speakers:
+          type: number
+          description: Maximum number of speakers to detect
+          default: 0
+        batch_size:
+          type: integer
+          description: Number of audio samples processed in one batch
+          minimum: 0
+          maximum: 24
+          default: 24
+        length_penalty:
+          type: number
+          description: Penalty for longer sequences
+          default: 1
+        patience:
+          type: number
+          description: Beam search patience factor
+          minimum: 0
+          maximum: 1
+          default: 1
+        min_duration_off:
+          type: number
+          description: Minimum duration of silence for a break
+          default: 0
+        min_duration_on:
+          type: number
+          description: Minimum duration for speech detection
+          default: 0
+        vad_onset:
+          type: number
+          description: Voice activity detection onset threshold
+          minimum: 0
+          maximum: 1
+          default: 0.5
+        vad_offset:
+          type: number
+          description: Voice activity detection offset threshold
+          minimum: 0
+          maximum: 1
+          default: 0.363
+        pad_offset:
+          type: number
+          description: Additional padding at segment end
+          default: 0
+        pad_onset:
+          type: number
+          description: Additional padding at segment start
+          default: 0
+        max_duration:
+          type: number
+          description: Maximum duration to process
+          default: 30
+    WhisperV2Response:
+      type: object
+      properties:
+        transcription:
+          type: array
+          items:
+            type: string
+          description: Array of transcribed text segments
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: number
+                description: Start time of segment
+              end:
+                type: number
+                description: End time of segment
+              text:
+                type: string
+                description: Transcribed text
+              words:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    word:
+                      type: string
+                    start:
+                      type: number
+                    end:
+                      type: number
+                description: Word-level timing information
+        request_time:
+          type: number
+          description: Total processing time in seconds
+        language:
+          type: string
+          description: Detected or specified language
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        status:
+          type: integer
+          description: Error status code
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication
+security:
+  - BearerAuth: []

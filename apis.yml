@@ -1,7 +1,15 @@
 aid: simplismart
 name: Simplismart
-description: 'Simplismart is a company surfaced as a portfolio company of accel and added to the API Evangelist
-  network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Simplismart is an AI inference and model-deployment platform that lets teams run,
+  fine-tune, and self-host generative AI models on optimized GPU infrastructure. It
+  offers OpenAI-compatible LLM chat inference (Llama, Qwen, Gemma, Mixtral, DeepSeek),
+  Whisper speech-to-text transcription, and Flux image generation as shared or dedicated
+  endpoints, plus a Training Suite for fine-tuning LLM/VLM and Flux models. A Model Suite
+  handles model compilation, clusters (own-cloud EKS/Kubernetes / bring-your-own-compute),
+  deployments with autoscaling, secrets, quotas, and observability (alerting and metric
+  export to Datadog, New Relic, Prometheus). A Python SDK and `simplismart` CLI cover the
+  full MLOps lifecycle. Simplismart is backed by Accel.
 url: https://raw.githubusercontent.com/api-evangelist/simplismart/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,18 +17,181 @@ x-backed-by:
 - accel
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://cdn.prod.website-files.com/688cd7a9d1e409a52d962d73/689a55919a5ee5abe9a2ed5e_meta.png
 tags:
 - Company
-- Ai
-apis: []
+- Artificial Intelligence
+- Machine Learning
+- Inference
+- LLM
+- Model Deployment
+- Fine-Tuning
+- MLOps
+- GPU
+- Speech to Text
+- Image Generation
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: simplismart:simplismart-chat-completion-api
+  name: Simplismart Chat Completion API
+  description: Large Language Model chat completion services
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Chat Completion
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-chat-completion-api-openapi.yml
+- aid: simplismart:simplismart-flux-api
+  name: Simplismart Flux API
+  description: The Flux API from Simplismart — 2 operation(s) for flux.
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Flux
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-flux-api-openapi.yml
+- aid: simplismart:simplismart-flux-training-api
+  name: Simplismart Flux Training API
+  description: Flux model training endpoints
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Flux Training
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-flux-training-api-openapi.yml
+- aid: simplismart:simplismart-llm-api
+  name: Simplismart Llm API
+  description: The Llm API from Simplismart — 1 operation(s) for llm.
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Llm
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-llm-api-openapi.yml
+- aid: simplismart:simplismart-metrics-api
+  name: Simplismart Metrics API
+  description: Performance and usage metrics for LLM requests
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-metrics-api-openapi.yml
+- aid: simplismart:simplismart-model-api
+  name: Simplismart Model API
+  description: The Model API from Simplismart — 1 operation(s) for model.
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Model
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-model-api-openapi.yml
+- aid: simplismart:simplismart-speech-to-text-api
+  name: Simplismart Speech to Text API
+  description: The Speech to Text API from Simplismart — 2 operation(s) for speech to text.
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Speech to Text
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-speech-to-text-api-openapi.yml
+- aid: simplismart:simplismart-training-api
+  name: Simplismart Training API
+  description: LLM/VLM model training endpoints
+  humanURL: https://docs.simplismart.ai/api-reference/introduction
+  baseURL: https://api.simplismart.live
+  tags:
+  - Training
+  properties:
+  - type: OpenAPI
+    url: openapi/simplismart-training-api-openapi.yml
 common:
 - type: Website
   url: https://www.simplismart.ai/
+- type: DeveloperPortal
+  url: https://docs.simplismart.ai/
+- type: Documentation
+  url: https://docs.simplismart.ai/overview
+- type: APIReference
+  url: https://docs.simplismart.ai/api-reference/introduction
+- type: GettingStarted
+  url: https://docs.simplismart.ai/quickstart/inference
+- type: Support
+  url: https://www.simplismart.ai/contact
+- type: Blog
+  url: https://www.simplismart.ai/blogs
+- type: Pricing
+  url: https://www.simplismart.ai/pricing
+- type: SignUp
+  url: https://app.simplismart.ai/
+- type: TermsOfService
+  url: https://www.simplismart.ai/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.simplismart.ai/privacy-policy
+- type: Authentication
+  url: authentication/simplismart-authentication.yml
+- type: Packages
+  url: packages/simplismart-packages.yml
+- type: SDKs
+  url: packages/simplismart-packages.yml
+- type: CLI
+  url: cli/simplismart-cli.yml
+- type: MCPServer
+  url: mcp/simplismart-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/simplismart-llms.txt
+- type: ErrorCatalog
+  url: errors/simplismart-problem-types.yml
+- type: Conventions
+  url: conventions/simplismart-conventions.yml
+- type: Conformance
+  url: conformance/simplismart-conformance.yml
+- type: Compliance
+  url: https://security.simplismart.ai/
+- type: Sandbox
+  url: sandbox/simplismart-sandbox.yml
+- type: DataModel
+  url: data-model/simplismart-data-model.yml
+- type: Overlay
+  url: overlays/simplismart-flux-dev-overlay.yaml
+- type: Overlay
+  url: overlays/simplismart-llm-training-overlay.yaml
+- type: AgenticAccess
+  url: agentic-access/simplismart-agentic-access.yml
+- type: DomainSecurity
+  url: security/simplismart-domain-security.yml
+- type: TrustCenter
+  url: security/simplismart-trust-center.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 39
+  pass: local-v1

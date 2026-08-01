@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/*.yml
+note: >-
+  No official hosted/remote MCP server was found for Simplismart (no docs page,
+  no /mcp endpoint, no @modelcontextprotocol registry entry as of 2026-07-21).
+  This is a CANDIDATE tool list derived from published OpenAPI operations, one
+  tool per distinct operation, to seed a future MCP server.
+server:
+  name: simplismart
+  transport: http
+tools:
+  - name: chat_completion
+    description: Create a chat completion (OpenAI-compatible) against a Simplismart-hosted LLM.
+    source_operation: openapi/simplismart-llama-3.3-70b-openapi.yml#createChatCompletion70B
+  - name: generate_image
+    description: Generate images from a text prompt using the Flux model.
+    source_operation: openapi/simplismart-flux-dev-openapi.yml#generateImage
+  - name: transcribe_audio
+    description: Transcribe or translate audio using Whisper V3.
+    source_operation: openapi/simplismart-whisper-v3-openapi.yml#transcribeAudioV3
+  - name: get_chat_metrics
+    description: Retrieve token counts and performance metrics for an LLM completion request.
+    source_operation: openapi/simplismart-llm-metrics-openapi.yml#getChatMetrics
+  - name: start_llm_training_job
+    description: Start a new LLM/VLM training job.
+    source_operation: openapi/simplismart-llm-training-openapi.yml#createTrainingJob
+  - name: list_llm_training_jobs
+    description: Retrieve a list of all LLM/VLM training jobs for the organisation.
+    source_operation: openapi/simplismart-llm-training-openapi.yml#listTrainingJobs
+  - name: get_llm_training_job
+    description: Retrieve details of a specific LLM/VLM training job.
+    source_operation: openapi/simplismart-llm-training-openapi.yml#getTrainingJob
+  - name: get_llm_training_metrics
+    description: Retrieve LLM/VLM training metrics.
+    source_operation: openapi/simplismart-llm-training-openapi.yml#getTrainingMetrics
+  - name: start_flux_training_job
+    description: Submit a new Flux training job with configuration, data, and metadata.
+    source_operation: openapi/simplismart-flux-training-openapi.yml#startFluxTrainingJob
+  - name: list_flux_training_jobs
+    description: Retrieve a list of Flux training jobs for the organisation.
+    source_operation: openapi/simplismart-flux-training-openapi.yml#listFluxTrainingJobs
+  - name: get_flux_training_job
+    description: Retrieve details of a specific Flux training job.
+    source_operation: openapi/simplismart-flux-training-openapi.yml#getFluxTrainingJob
+  - name: get_flux_training_metrics
+    description: Retrieve Flux training metrics.
+    source_operation: openapi/simplismart-flux-training-openapi.yml#getFluxTrainingMetrics

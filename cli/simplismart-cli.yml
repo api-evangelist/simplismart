@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.simplismart.ai/sdk/cli/overview
+name: simplismart
+summary: Command-line interface to manage Simplismart model repositories, deployments, and secrets. Ships inside the simplismart-sdk PyPI package.
+install:
+  - method: pip
+    command: pip install simplismart-sdk
+    binary: simplismart
+authentication:
+  style: playground-token
+  env: SIMPLISMART_PG_TOKEN
+  flag: "--pg-token TOKEN"
+global_options:
+  - flag: "--pg-token TOKEN"
+    description: Playground token (falls back to SIMPLISMART_PG_TOKEN)
+  - flag: "--base-url URL"
+    description: API base URL
+    default: https://api.app.simplismart.ai
+  - flag: "--timeout SECONDS"
+    description: Request timeout
+    default: "300"
+  - flag: "--trace-id ID"
+    description: Optional trace/correlation ID (generated per request)
+command_groups:
+  - group: model-repos
+    docs: https://docs.simplismart.ai/sdk/cli/model-repos
+    commands:
+      - "simplismart model-repos list"
+      - "simplismart model-repos create-container --name <name> --source-type docker_hub --runtime-gpus 1 --source-secret <SECRET_ID> --registry-path <path> --docker-tag <tag>"
+      - "simplismart model-repos create-private-compile --name <name> --source-type huggingface --source-url <path> --model-class <class> --accelerator-type <type> --model-config @model_config.json --optimisation-config @optimisation_config.json --pipeline-config @pipeline_config.json"
+  - group: deployments
+    docs: https://docs.simplismart.ai/sdk/cli/deployments
+    commands:
+      - "simplismart deployments list"
+      - "simplismart deployments create --model-repo <ID> --org $ORG_ID --gpu-id nvidia-h100 --name <name> --min-pod-replicas 1 --max-pod-replicas 2 --autoscale-config @config.json"
+      - "simplismart deployments start --deployment-id <ID>"
+      - "simplismart deployments stop --deployment-id <ID>"
+      - "simplismart deployments delete --deployment-id <ID>"
+  - group: secrets
+    docs: https://docs.simplismart.ai/sdk/cli/secrets
+    commands:
+      - "simplismart secrets create --org-id $ORG_ID --name <name> --secret-type docker_hub --data @data.json"
+      - "simplismart secrets list --org-id $ORG_ID"
+  - group: analytics
+    docs: https://docs.simplismart.ai/sdk/cli/analytics
+    commands:
+      - "simplismart analytics ...  # monitor usage and cost on the platform"

@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.simplismart.ai/get-started/playground + https://docs.simplismart.ai/inference/shared-endpoint
+summary: >-
+  Simplismart exposes an interactive Playground and shared endpoints for trying models
+  before provisioning dedicated infrastructure. There is no separate test-vs-live key
+  scheme or synthetic test credentials — the same organisation API key is used, and cost
+  is governed by GPU quotas rather than a sandbox mode.
+playground:
+  url: https://app.simplismart.ai/
+  docs: https://docs.simplismart.ai/get-started/playground/large-language-models
+  surfaces:
+    - name: Large Language Models
+      docs: https://docs.simplismart.ai/get-started/playground/large-language-models
+    - name: Image Generation Models
+      docs: https://docs.simplismart.ai/get-started/playground/image-generation-models
+    - name: Transcription Models
+      docs: https://docs.simplismart.ai/get-started/playground/transcription-models
+endpoint_modes:
+  - mode: shared
+    description: Access models through Simplismart's shared playground endpoints (no dedicated infra).
+    docs: https://docs.simplismart.ai/inference/shared-endpoint
+  - mode: dedicated
+    description: Deploy models on exclusive, isolated infrastructure with stable performance.
+    docs: https://docs.simplismart.ai/inference/dedicated-endpoint
+  - mode: bring-your-own-compute
+    description: Deploy and run models on your own cloud infrastructure.
+    docs: https://docs.simplismart.ai/inference/bring-your-own-compute
+default_quota:
+  note: Every new organisation receives 1x H100 and 1x L40 GPU quota; increases via support@simplismart.ai.
+  docs: https://docs.simplismart.ai/model-suite/settings/quotas
+test_credentials:
+  published: false
+  note: No synthetic/test API keys, cards, or magic identifiers are published.

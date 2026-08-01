@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.yml + https://docs.simplismart.ai/sdk/python/overview
+format: json
+note: >-
+  Simplismart does not use RFC 9457 application/problem+json. Errors are returned
+  as a plain JSON object with a `detail` string; the Python SDK surfaces them as
+  SimplismartError(status_code, message, payload). Problem list below is derived
+  from the 4xx/5xx responses declared across the published OpenAPI specs.
+envelope:
+  field: detail
+  example: '{"detail": "No ModelDeployment matches the given query."}'
+  sdk_exception: SimplismartError
+  sdk_attributes: [status_code, payload, message]
+problems:
+  - status: 400
+    title: Bad Request
+    detail: Invalid or missing request parameters. Check that all required fields are present and correctly typed.
+    remediation: Validate the request body/parameters against the endpoint's OpenAPI schema.
+  - status: 401
+    title: Unauthorized
+    detail: Invalid or missing authentication token. API keys expire at midnight UTC on their configured date and return 401 afterward.
+    remediation: "Pass a valid `Authorization: Bearer <API_KEY>` header; rotate the key before its expiry."
+  - status: 404
+    title: Not Found
+    detail: The requested resource (deployment, training job, or metrics) could not be found for the provided id/request_id.
+    remediation: Verify the resource id and organisation scope.
+  - status: 500
+    title: Internal Server Error
+    detail: An unexpected error occurred on the server while processing the request.
+    remediation: Retry with backoff; contact support@simplismart.ai if it persists.

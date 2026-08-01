@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+docs: https://docs.simplismart.ai/model-suite/settings/api-keys
+notes:
+  - Auth is a per-organisation API key passed as `Authorization: Bearer <API_KEY>` (http bearer, JWT format).
+  - Keys are created under Settings -> API Keys, carry an expiry date (or Never), and return 401 after expiry.
+  - The Python SDK/CLI use a Playground (PG) token via SIMPLISMART_PG_TOKEN for platform-management operations.
+source: openapi/simplismart-deepseek-r1-qwen-32b-openapi.yml, openapi/simplismart-devstral-small-openapi.yml,
+  openapi/simplismart-flux-jobs-list-openapi.yml, openapi/simplismart-flux-training-openapi.yml,
+  openapi/simplismart-gemma3-27b-openapi.yml, openapi/simplismart-gemma3-4b-openapi.yml, openapi/simplismart-job-by-request-openapi.yml,
+  openapi/simplismart-llama-3.3-70b-openapi.yml, openapi/simplismart-llama-4-maverick-17b-openapi.yml,
+  openapi/simplismart-llama-8b-openapi.yml, openapi/simplismart-llm-jobs-list-openapi.yml, openapi/simplismart-llm-metrics-openapi.yml
+  ...
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JWT token for authentication
+  sources:
+  - openapi/simplismart-deepseek-r1-qwen-32b-openapi.yml
+  - openapi/simplismart-devstral-small-openapi.yml
+  - openapi/simplismart-flux-jobs-list-openapi.yml
+  - openapi/simplismart-flux-training-openapi.yml
+  - openapi/simplismart-gemma3-27b-openapi.yml
+  - openapi/simplismart-gemma3-4b-openapi.yml
+  - openapi/simplismart-job-by-request-openapi.yml
+  - openapi/simplismart-llama-3.3-70b-openapi.yml
+  - openapi/simplismart-llama-4-maverick-17b-openapi.yml
+  - openapi/simplismart-llama-8b-openapi.yml
+  - openapi/simplismart-llm-jobs-list-openapi.yml
+  - openapi/simplismart-llm-metrics-openapi.yml
+  - openapi/simplismart-llm-training-openapi.yml
+  - openapi/simplismart-mixtral-8x7b-openapi.yml
+  - openapi/simplismart-qwen-32b-openapi.yml
+  - openapi/simplismart-whisper-v2-openapi.yml
+  - openapi/simplismart-whisper-v3-openapi.yml

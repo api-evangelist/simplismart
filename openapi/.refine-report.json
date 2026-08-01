@@ -1,0 +1,28 @@
+{
+  "provider": "simplismart",
+  "sources": [
+    "simplismart-chat-completion-api-openapi.yml",
+    "simplismart-flux-api-openapi.yml",
+    "simplismart-flux-training-api-openapi.yml",
+    "simplismart-llm-api-openapi.yml",
+    "simplismart-metrics-api-openapi.yml",
+    "simplismart-model-api-openapi.yml",
+    "simplismart-speech-to-text-api-openapi.yml",
+    "simplismart-training-api-openapi.yml"
+  ],
+  "outputs": [
+    "simplismart-chat-completion-api-openapi.yml",
+    "simplismart-flux-api-openapi.yml",
+    "simplismart-flux-training-api-openapi.yml",
+    "simplismart-llm-api-openapi.yml",
+    "simplismart-metrics-api-openapi.yml",
+    "simplismart-model-api-openapi.yml",
+    "simplismart-speech-to-text-api-openapi.yml",
+    "simplismart-training-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

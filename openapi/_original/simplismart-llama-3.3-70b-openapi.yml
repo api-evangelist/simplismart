@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: Llama 3.3 70B API
+  description: High-capacity LLM for complex tasks
+  version: 1.0.0
+servers:
+  - url: https://api.simplismart.live
+    description: Llama-3p3-70B-Instruct Proxy Server
+tags:
+  - name: Chat Completion
+    description: Large Language Model chat completion services
+paths:
+  /chat/completions:
+    post:
+      tags:
+        - Chat Completion
+      summary: Create chat completion with Llama 70B
+      description: Create a chat completion for given messages with streaming support
+      operationId: createChatCompletion70B
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                messages:
+                  type: array
+                  description: Array of messages in the conversation
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum:
+                          - system
+                          - user
+                          - assistant
+                        description: The role of the message sender
+                      content:
+                        type: string
+                        description: The content of the message
+                    required:
+                      - role
+                      - content
+                model:
+                  type: string
+                  description: Model identifier
+                  enum:
+                    - RedHatAI/Llama-3.3-70B-Instruct-FP8-dynamic
+                  default: RedHatAI/Llama-3.3-70B-Instruct-FP8-dynamic
+                stream:
+                  type: boolean
+                  description: Whether to stream the response
+                  default: false
+                temperature:
+                  type: number
+                  description: Sampling temperature
+                  minimum: 0
+                  maximum: 2
+                  default: 0.7
+                max_tokens:
+                  type: integer
+                  description: Maximum number of tokens to generate
+                  minimum: 1
+                  maximum: 4096
+                  default: 1024
+                top_p:
+                  type: number
+                  description: Nucleus sampling parameter
+                  minimum: 0
+                  maximum: 1
+                  default: 0.95
+                stop:
+                  type: array
+                  description: Sequences where the API will stop generating
+                  items:
+                    type: string
+                  nullable: true
+              required:
+                - messages
+                - model
+            example:
+              model: RedHatAI/Llama-3.3-70B-Instruct-FP8-dynamic
+              messages:
+                - role: system
+                  content: Act as a helpful assistant to the user
+                - role: user
+                  content: Give me a travel itinerary for a 7-day trip to Japan
+              stream: false
+              temperature: 0.7
+              max_tokens: 1024
+              top_p: 0.9
+              stop: null
+      responses:
+        '200':
+          description: Successful chat completion
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the completion
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        delta:
+                          type: object
+                          properties:
+                            content:
+                              type: string
+                              description: Generated text content
+                        index:
+                          type: integer
+                          description: Index of the choice
+                        finish_reason:
+                          type: string
+                          enum:
+                            - stop
+                            - length
+                            - content_filter
+                          description: Reason for finishing the generation
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized - Invalid token
+        '500':
+          description: Internal server error
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication
+security:
+  - BearerAuth: []

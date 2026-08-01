@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/*.yml + docs.simplismart.ai
+skills:
+  - file: simplismart-run-llm-chat.md
+    name: Run an LLM chat completion on Simplismart
+    api: openapi/simplismart-llama-3.3-70b-openapi.yml
+    operations: [createChatCompletion70B, getChatMetrics]
+  - file: simplismart-transcribe-audio.md
+    name: Transcribe or translate audio with Whisper on Simplismart
+    api: openapi/simplismart-whisper-v3-openapi.yml
+    operations: [transcribeAudioV3, transcribeAudioV2]
+  - file: simplismart-finetune-llm.md
+    name: Start and monitor an LLM/VLM fine-tuning job on Simplismart
+    api: openapi/simplismart-llm-training-openapi.yml
+    operations: [createTrainingJob, listTrainingJobs, getTrainingJob, getTrainingMetrics]

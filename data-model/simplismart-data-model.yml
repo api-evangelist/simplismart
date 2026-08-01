@@ -1,0 +1,62 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.yml + https://docs.simplismart.ai/sdk/python/overview
+summary: Entity graph derived from the Simplismart platform APIs, SDK object shapes, and Model Suite docs.
+entities:
+  - name: Organisation
+    id: org_id (uuid)
+    description: Top-level tenant that owns quotas, API keys, workspaces, deployments, and secrets.
+  - name: Workspace
+    belongs_to: Organisation
+    description: Scopes models and deployments within an organisation.
+  - name: ApiKey
+    belongs_to: Organisation
+    description: Bearer token used to authenticate API requests; carries a name, created-at, and expiry.
+  - name: ModelRepo
+    id: uuid
+    belongs_to: Organisation
+    description: A compiled/containerised model (from Hugging Face, Docker Hub, etc.) ready to deploy.
+    fields: [name, source_type, source_url, model_class, accelerator_type, status]
+  - name: Deployment
+    id: deployment_id (uuid)
+    belongs_to: Organisation
+    references:
+      - to: ModelRepo
+        via: model_repo
+        kind: belongs_to
+    description: A running serving instance of a ModelRepo on a GPU with autoscale config.
+    fields: [name, gpu_id, min_pod_replicas, max_pod_replicas, autoscale_config, status, model_endpoint]
+  - name: Secret
+    belongs_to: Organisation
+    description: Stored credential (e.g. docker_hub) used by registries, clusters, and deployments.
+  - name: Cluster
+    belongs_to: Organisation
+    description: Compute cluster (own-cloud EKS/Kubernetes) imported or created for deployments.
+  - name: LLMTrainingJob
+    id: request_id / job_id
+    belongs_to: Organisation
+    description: An LLM/VLM fine-tuning job with metrics.
+    fields: [config, training_data, metadata, status]
+  - name: FluxTrainingJob
+    id: job_id
+    belongs_to: Organisation
+    description: A Flux image-model training job with mlflow metrics.
+  - name: ChatCompletion
+    description: OpenAI-compatible inference result; keyed by request_id for metrics retrieval.
+relationships:
+  - from: Deployment
+    to: ModelRepo
+    kind: belongs_to
+    via: model_repo
+  - from: ModelRepo
+    to: Organisation
+    kind: belongs_to
+    via: org_id
+  - from: LLMTrainingJob
+    to: Organisation
+    kind: belongs_to
+    via: org_id
+  - from: Deployment
+    to: Secret
+    kind: has_many
+    via: source_secret

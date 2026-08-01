@@ -1,0 +1,151 @@
+# Simplismart
+
+## Docs
+
+- [Flux Dev API](https://docs.simplismart.ai/api-reference/inference/flux-dev.md): Generate high-quality images using the Flux model
+- [Gemma 3 27B API](https://docs.simplismart.ai/api-reference/inference/gemma3-27B.md): Create a chat completion for given messages with streaming support
+- [Gemma 3 4B API](https://docs.simplismart.ai/api-reference/inference/gemma3-4B.md): Create a chat completion for given messages with streaming support
+- [Llama 3.3 70B API](https://docs.simplismart.ai/api-reference/inference/llama-3.3-70b-instruct.md): Create a chat completion for given messages with streaming support
+- [Llama 4 Maverick 17B API](https://docs.simplismart.ai/api-reference/inference/llama-4-maverick-17b.md): Create a chat completion for given messages with streaming support
+- [Llama 3.1 8B API](https://docs.simplismart.ai/api-reference/inference/llama3.1-8B.md): Create a chat completion for given messages with streaming support
+- [LLM Metric API](https://docs.simplismart.ai/api-reference/inference/llm-metric.md): Retrieve detailed metrics about token counts, processing time, and performance statistics
+- [Qwen 14B API](https://docs.simplismart.ai/api-reference/inference/qwen-14b.md): Create a chat completion for given messages with streaming support
+- [Qwen 32B API](https://docs.simplismart.ai/api-reference/inference/qwen-32b.md): Create a chat completion for given messages with streaming support
+- [Whisper V2 API](https://docs.simplismart.ai/api-reference/inference/whisper-v2.md): Process audio files for transcription or translation with advanced options
+- [Whisper V3 API](https://docs.simplismart.ai/api-reference/inference/whisper-v3.md): Process audio files for transcription or translation with enhanced language support. Supports multiple audio formats and provides detailed word-level timestamps and speaker diarization.
+- [Simplismart APIs](https://docs.simplismart.ai/api-reference/introduction.md): Get started with the Simplismart API, including authentication, endpoints, and workflows for model training and inference.
+- [Retrieve Flux Job Details By Request ID and Job ID](https://docs.simplismart.ai/api-reference/training/flux/retrieve-flux-job-details-by-request-id-and-job-id.md): Fetch metadata and configuration details of a Flux training job by job_id the and org_id.
+- [Retrieve List of Flux Jobs By Org ID](https://docs.simplismart.ai/api-reference/training/flux/retrieve-list-of-flux-jobs-by-org-id.md): Overview of Flux training capabilities and endpoints.
+- [Start a new Flux Training Job](https://docs.simplismart.ai/api-reference/training/flux/start-a-new-flux-training-job.md): Submit a new Flux training job with the specified configuration, training data, and metadata.
+- [Retrieve List of LLM/VLM Jobs By Org ID](https://docs.simplismart.ai/api-reference/training/llm/get-job.md): Fetches a list of all LLM or VLM training jobs associated with the specified organization.
+- [Retrieve LLM/VLM Job Details By Request ID](https://docs.simplismart.ai/api-reference/training/llm/get-job-by-req.md): Fetch metadata and configuration details of a training job identified by the provided request_id and org_id.
+- [Start a new LLM/VLM training job](https://docs.simplismart.ai/api-reference/training/llm/start-a-new-llm-vlm-training-job.md): Submit a new training job with the specified configuration, training data, and metadata.
+- [Advanced Benchmarking](https://docs.simplismart.ai/benchmarking/advanced-benchmarking.md): Perform in-depth, customizable evaluations of LLM outputs using custom datasets and a range of evaluator types including programmatic, human, and AI-based.
+- [Introduction](https://docs.simplismart.ai/benchmarking/introduction.md): Discover Simplismart’s benchmarking suite to evaluate model performance & quality
+- [Performance Benchmarking](https://docs.simplismart.ai/benchmarking/performance-benchmarking.md): Set up and run load tests to evaluate LLM deployment speed, throughput, and scalability using chat datasets.
+- [Quality Benchmarking](https://docs.simplismart.ai/benchmarking/quality-benchmarking.md): Measure the accuracy and quality of LLM outputs using curated datasets and standardized evaluation metrics.
+- [Compilation Configurations](https://docs.simplismart.ai/configurations/compilation-configurations.md): Reference guide for model compilation configurations, including Optimization settings and Quantization options for different hardware environments.
+- [LLM Training Configuration](https://docs.simplismart.ai/configurations/llm-training-configuration.md): Detailed guide for configuring LLM training parameters, including input/output features, quantization settings, and prompt templating for combining multiple data columns.
+- [Image Generation Models](https://docs.simplismart.ai/get-started/playground/image-generation-models.md): Generate fast, high-quality AI images using an intuitive playground
+- [Large Language Models](https://docs.simplismart.ai/get-started/playground/large-language-models.md): Generate and evaluate text across multiple powerful LLMs using a fast, interactive interface
+- [Transcription Models](https://docs.simplismart.ai/get-started/playground/transcription-models.md): Get real-time, high-quality speech-to-text output for any audio with fast STT processing, live results, and support for various audio formats.
+- [Model Deployment Guide](https://docs.simplismart.ai/guides/deployment-guides.md): A guide to deploying models with best practices/ checks for reliable model serving
+- [Dynamic Lora Compilation](https://docs.simplismart.ai/guides/dynamic-lora-compilation.md): Use dynamic LoRA compilation on Simplismart to run multiple task-specific LoRAs in a single deployment, improving efficiency and simplifying workflows.
+- [Overview](https://docs.simplismart.ai/guides/flux-compilation-guide.md): Comprehensive guide for compiling Flux models
+- [LiveKit Integration with Simplismart](https://docs.simplismart.ai/guides/livekit.md): Learn how to build real-time voice AI agents using LiveKit with Simplismart's high-performance inference APIs
+- [Multi Control Net](https://docs.simplismart.ai/guides/multi-control-net.md): Guide to combining ControlNets with FluxPipeline across different image generation pipelines for more guided and flexible outputs.
+- [Multi Mode Control Net](https://docs.simplismart.ai/guides/multi-mode-control-net.md)
+- [Multi Pipeline](https://docs.simplismart.ai/guides/multi-pipeline.md): Guide to using multiple image generation pipelines with FluxPipeline on Simplismart.
+- [Optimization Guide](https://docs.simplismart.ai/guides/optimization-guide.md)
+- [Whisper Deployment Guide](https://docs.simplismart.ai/guides/whisper-deployment-guide.md): Learn how to deploy Whisper V3 for transcription and translation, featuring VAD, diarization, and advanced hallucination-reduction capabilities
+- [Overview](https://docs.simplismart.ai/inference/bring-your-own-compute.md): Deploy and run models on your own cloud infrastructure.
+- [Dedicated Endpoint](https://docs.simplismart.ai/inference/dedicated-endpoint.md): Deploy models on exclusive, isolated infrastructure with stable performance and full customization
+- [Shared Endpoint](https://docs.simplismart.ai/inference/shared-endpoint.md): Access models through Simplismart’s shared playground endpoints.
+- [Add Container](https://docs.simplismart.ai/model-suite/add-container.md): Add a container image from Docker Hub, Depot, Nvidia NGC, Quay, or Amazon ECR to Simplismart
+- [Adding a Custom Model](https://docs.simplismart.ai/model-suite/adding-a-custom-model.md): Prepare and add a custom model or custom pipeline to the Simplismart platform.
+- [Create a Cluster](https://docs.simplismart.ai/model-suite/clusters.md): Learn how to create a cluster on your own cloud using Simplismart, configure compute resources, and prepare for model deployments.
+- [Create AWS EKS Cluster on AWS Console](https://docs.simplismart.ai/model-suite/clusters/import-cluster/create-aws-eks-cluster.md): Step-by-step guide to create an AWS EKS cluster and configure node groups on the AWS platform
+- [E2E Cluster Import Prerequisites](https://docs.simplismart.ai/model-suite/clusters/import-cluster/e2e-cloud-prerquisites.md)
+- [Import AWS EKS Cluster to Simplismart Platform](https://docs.simplismart.ai/model-suite/clusters/import-cluster/import-aws-cluster.md): Learn how to import an existing AWS EKS cluster into the Simplismart platform and configure its settings
+- [Import a Kubernetes Cluster](https://docs.simplismart.ai/model-suite/clusters/import-cluster/import-kubernetes-cluster.md): Learn how to import your existing Kubernetes cluster into the Simplismart platform
+- [Creating a Deployment](https://docs.simplismart.ai/model-suite/deployments/creating-a-deployment.md): Steps to guide you through the process of creating a Deployment
+- [Deploying a Custom Model](https://docs.simplismart.ai/model-suite/deployments/deploy-a-custom-model.md): Steps to guide you through the process of creating a custom model deployment
+- [Deploy Container](https://docs.simplismart.ai/model-suite/deployments/deploy-container.md): Configure and launch a container deployment on Simplismart
+- [Editing a Deployment](https://docs.simplismart.ai/model-suite/deployments/edit-deployment.md): Guide to editing existing deployments on Simplismart
+- [Inference & Monitoring](https://docs.simplismart.ai/model-suite/deployments/inference-and-monitoring.md)
+- [SSH Access](https://docs.simplismart.ai/model-suite/deployments/ssh-access.md): Configure SSH access to connect directly to a running deployment container
+- [Cloud Accounts](https://docs.simplismart.ai/model-suite/integrations/cloud-account.md): Steps to guide you through the process of adding your Cloud Accounts.
+- [Hosted Zone](https://docs.simplismart.ai/model-suite/integrations/hosted-zone.md): Step-by-step guide for creating and managing Hosted Zones.
+- [Secrets](https://docs.simplismart.ai/model-suite/integrations/secrets.md): Store and manage credentials used by integrations, clusters, registries, and deployments.
+- [Optimise a Model](https://docs.simplismart.ai/model-suite/optimise-a-model.md): End-to-end process for adding, configuring, and compiling a model on the Simplismart platform.
+- [API Keys](https://docs.simplismart.ai/model-suite/settings/api-keys.md): Generate and manage API keys to authenticate requests to your Simplismart.ai organisation
+- [Billing](https://docs.simplismart.ai/model-suite/settings/billing.md): The Billing section provides visibility into how your organisation is charged for platform usage, including credits, invoices, payments, and account balance status.
+- [General Settings](https://docs.simplismart.ai/model-suite/settings/general-settings.md): Manage your profile and organisation info within this section
+- [Quotas](https://docs.simplismart.ai/model-suite/settings/quotas.md): Quotas define usage limits for resources available to your organisation, ensuring fair allocation of infrastructure and preventing excessive usage.
+- [Usage](https://docs.simplismart.ai/model-suite/settings/usage.md): This page helps you track your usage across all deployments
+- [Workspaces](https://docs.simplismart.ai/model-suite/settings/workspaces.md): Scope models and deployments within your organisation using Workspaces
+- [Your Organisation](https://docs.simplismart.ai/model-suite/settings/your-organisation.md): Manage your organisation(s) and team members within this section
+- [Create an Alert Rule](https://docs.simplismart.ai/observability/alerting/alert-rules.md): Learn how to set up alert rules to monitor your deployments and get notified when thresholds are breached
+- [Create a Contact Point](https://docs.simplismart.ai/observability/alerting/contact-points.md): Configure notification channels for your Simplismart deployment alerts
+- [Email](https://docs.simplismart.ai/observability/alerting/contact-points/email.md): Send alert notifications to one or more email addresses
+- [PagerDuty](https://docs.simplismart.ai/observability/alerting/contact-points/pagerduty.md): Create PagerDuty incidents when Simplismart alerts fire
+- [Slack](https://docs.simplismart.ai/observability/alerting/contact-points/slack.md): Post alert notifications to a Slack channel via incoming webhook
+- [Microsoft Teams](https://docs.simplismart.ai/observability/alerting/contact-points/teams.md): Post alert notifications to a Microsoft Teams channel via incoming webhook
+- [VictorOps](https://docs.simplismart.ai/observability/alerting/contact-points/victorops.md): Send alert notifications to VictorOps (Splunk On-Call) via REST endpoint
+- [Alerting Overview](https://docs.simplismart.ai/observability/alerting/overview.md): Monitor your deployments and get notified when performance thresholds are breached
+- [Datadog](https://docs.simplismart.ai/observability/export-metrics/datadog.md): Export Simplismart metrics to Datadog
+- [New Relic](https://docs.simplismart.ai/observability/export-metrics/new-relic.md): Export Simplismart metrics to New Relic
+- [Overview](https://docs.simplismart.ai/observability/export-metrics/overview.md): Integrate Simplismart metrics with your monitoring and observability tools
+- [Prometheus](https://docs.simplismart.ai/observability/export-metrics/prometheus.md): Export Simplismart metrics to Prometheus
+- [Supported Metrics](https://docs.simplismart.ai/observability/export-metrics/supported-metrics.md): Reference for all metrics available from the Simplismart metrics endpoint
+- [Introduction](https://docs.simplismart.ai/overview.md)
+- [Deploy Your First Model](https://docs.simplismart.ai/quickstart/deploy.md): Step-by-step guide to deploying an AI model on Simplismart
+- [Inference](https://docs.simplismart.ai/quickstart/inference.md)
+- [Terminology Guide](https://docs.simplismart.ai/reference/terminology-guide.md)
+- [Analytics Commands](https://docs.simplismart.ai/sdk/cli/analytics.md): CLI commands for monitoring usage and cost on the Simplismart platform
+- [Deployment Commands](https://docs.simplismart.ai/sdk/cli/deployments.md): CLI commands for managing deployments on the Simplismart platform
+- [Model Repository Commands](https://docs.simplismart.ai/sdk/cli/model-repos.md): CLI commands for managing model repositories on the Simplismart Platform
+- [Overview](https://docs.simplismart.ai/sdk/cli/overview.md): Command-line interface reference for Simplismart
+- [Secret Commands](https://docs.simplismart.ai/sdk/cli/secrets.md): CLI commands for managing secrets on the Simplismart platform
+- [Analytics](https://docs.simplismart.ai/sdk/python/analytics.md): Monitor usage and cost using the Simplismart Python SDK
+- [Deployments](https://docs.simplismart.ai/sdk/python/deployments.md): Manage deployments using the Simplismart Python SDK
+- [Model Repositories](https://docs.simplismart.ai/sdk/python/model-repos.md): Manage model repositories using the Simplismart Python SDK
+- [Overview](https://docs.simplismart.ai/sdk/python/overview.md): Complete Python SDK reference for Simplismart Platform APIs
+- [Secrets](https://docs.simplismart.ai/sdk/python/secrets.md): Manage Docker registry credentials and other secrets using the Simplismart Python SDK
+- [Sign Up](https://docs.simplismart.ai/signup.md): Quickly create an account and unlock full access to the Simplismart platform
+- [CLIP Model Training](https://docs.simplismart.ai/training-suite/custom-models/clip.md): Train CLIP models on Simplismart to align images and text, customize embeddings, and build accurate vision–language applications
+- [Encoder Model Training](https://docs.simplismart.ai/training-suite/custom-models/encoder.md): Train encoder models on Simplismart for sequence classification tasks, enabling efficient feature extraction and accurate prediction from textual data.
+- [Sequence Classification](https://docs.simplismart.ai/training-suite/custom-models/seq-dataset-prep.md): Sequence classification dataset preparation
+- [Deploy Fine-Tuned model](https://docs.simplismart.ai/training-suite/deploy-fine-tuned-model.md)
+- [ECD Training Suite](https://docs.simplismart.ai/training-suite/ecd/create-ecd-training.md): Step-by-step guide to training and deploying an Encoder-Combiner-Decoder (ECD) model on Simplismart
+- [ECD Model Trainer Configuration Schema](https://docs.simplismart.ai/training-suite/ecd/ecd-training-config-schema.md): A detailed overview of the ECD model configuration, outlining each field and its purpose
+- [Fine-Tuned Inference](https://docs.simplismart.ai/training-suite/flux/fine-tuned-inference.md): Run inference with the fine-tuned LoRA
+- [Initiate a New Training Job](https://docs.simplismart.ai/training-suite/flux/initiate-a-new-training-job.md): Steps to fine-tune a flux model using the Simplismart platform
+- [Introduction](https://docs.simplismart.ai/training-suite/introduction.md)
+- [DPO (LLM)](https://docs.simplismart.ai/training-suite/llms/dpo-llm.md): Specifies how to structure conversational data for DPO-based fine-tuning.
+- [GRPO (LLM)](https://docs.simplismart.ai/training-suite/llms/grpo-llm.md): Guidelines for preparing train_dataset entries to fine-tune a LLM with text prompts.
+- [Sequence Classification Model Training](https://docs.simplismart.ai/training-suite/llms/sequence-classification.md): Train LLMs on Simplismart for sequence classification tasks, enabling efficient feature extraction and accurate prediction from textual data.
+- [SFT (LLM)](https://docs.simplismart.ai/training-suite/llms/sft-llm.md): Provides schema examples for structuring conversations in SFT training.
+- [Creating a Training Job](https://docs.simplismart.ai/training-suite/llms/training-new.md): Comprehensive guide of the Simplismart training suite for LLMs and VLMs
+- [Supported Models](https://docs.simplismart.ai/training-suite/supported-models.md): List of models supported for fine-tuning on the Simplismart platform
+- [GRPO (VLM)](https://docs.simplismart.ai/training-suite/vlms/grpo-vlm.md): Guidelines for preparing train_dataset entries to fine-tune a VLM with both images and text prompts.
+- [SFT (VLM)](https://docs.simplismart.ai/training-suite/vlms/sft-vlm.md)
+- [Model Optimization Troubleshooting Guide](https://docs.simplismart.ai/troubleshooting-faq/model-compilation-troubleshooting.md): Refer to this guide to ensure proper configuration of infrastructure settings for model compilation and inference. It also helps identify and prevent common issues related to hardware incompatibilities and performance bottlenecks.
+- [Model Deployment Troubleshooting Guide](https://docs.simplismart.ai/troubleshooting-faq/model-deployment-troubleshooting.md): Follow this comprehensive guide to successfully deploy models on Simplismart Platform using the Simplismart Infrastructure, from initial configuration to production monitoring.
+- [VAD Parameter Tuning](https://docs.simplismart.ai/troubleshooting-faq/vad-parameter-tuning.md): Guide to tuning Voice Activity Detection parameters
+- [Frequently Asked Questions](https://docs.simplismart.ai/troubleshooting-faq/whisper-troubleshooting.md)
+
+## OpenAPI Specs
+
+- [mixtral-8x7b-instruct-fp8](https://docs.simplismart.ai/openapi-specs/playground/mixtral-8x7b-instruct-fp8.yaml)
+- [llama-70b](https://docs.simplismart.ai/openapi-specs/playground/llama-70b.yaml)
+- [llama-8b](https://docs.simplismart.ai/openapi-specs/playground/llama-8b.yaml)
+- [llama-3p3-70b-instruct](https://docs.simplismart.ai/openapi-specs/playground/llama-3p3-70b-instruct.yaml)
+- [llm-training](https://docs.simplismart.ai/openapi-specs/playground/llm-training.yaml)
+- [gemma3-1b](https://docs.simplismart.ai/openapi-specs/playground/gemma3-1b.yaml)
+- [gemma3-4B](https://docs.simplismart.ai/openapi-specs/playground/gemma3-4B.yaml)
+- [gemma3-27b](https://docs.simplismart.ai/openapi-specs/playground/gemma3-27b.yaml)
+- [qwen-14b](https://docs.simplismart.ai/openapi-specs/playground/qwen-14b.yaml)
+- [qwen-32b](https://docs.simplismart.ai/openapi-specs/playground/qwen-32b.yaml)
+- [deepseek-r1-distill-qwen-32b](https://docs.simplismart.ai/openapi-specs/playground/deepseek-r1-distill-qwen-32b.yaml)
+- [devstral-small-2505](https://docs.simplismart.ai/openapi-specs/playground/devstral-small-2505.yaml)
+- [deepseek-r1-distill-llama-70b](https://docs.simplismart.ai/openapi-specs/playground/deepseek-r1-distill-llama-70b.yaml)
+- [llama-4-maverick-17b](https://docs.simplismart.ai/openapi-specs/playground/llama-4-maverick-17b.yaml)
+- [package](https://docs.simplismart.ai/package.json)
+- [package-lock](https://docs.simplismart.ai/package-lock.json)
+- [openapi](https://docs.simplismart.ai/api-reference/openapi.json)
+- [flux-training](https://docs.simplismart.ai/openapi-specs/playground/flux-training.yaml)
+- [whisper-v3](https://docs.simplismart.ai/openapi-specs/playground/whisper-v3.yaml)
+- [whisper-v2](https://docs.simplismart.ai/openapi-specs/playground/whisper-v2.yaml)
+- [llm-metrics](https://docs.simplismart.ai/openapi-specs/playground/llm-metrics.yaml)
+- [flux-dev](https://docs.simplismart.ai/openapi-specs/playground/flux-dev.yaml)
+- [Flux_Training_Post](https://docs.simplismart.ai/Flux_Training_Post.yaml)
+- [Get_All_Jobs_LLM](https://docs.simplismart.ai/Get_All_Jobs_LLM.yaml)
+- [Get_All_Job_Flux](https://docs.simplismart.ai/Get_All_Job_Flux.yaml)
+- [GetJobByReq](https://docs.simplismart.ai/GetJobByReq.yaml)
+- [Flux_Dev_Final_1](https://docs.simplismart.ai/Flux_Dev_Final_1.yaml)
+- [Flux_Dev_Post_Training](https://docs.simplismart.ai/Flux_Dev_Post_Training.yaml)
+
+## Optional
+
+- [Blog](https://www.simplismart.ai/blogs)

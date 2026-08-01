@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: probed
+source: live /.well-known/ probes 2026-07-21
+note: >-
+  No /.well-known/ discovery documents are published on any Simplismart host.
+  Absence recorded for auditability; no WellKnown/SecurityTxt pointer is wired.
+hosts_probed:
+  - host: https://www.simplismart.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://docs.simplismart.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+  - host: https://api.simplismart.live
+    documents:
+      - {path: /.well-known/security.txt, status: 405}
+      - {path: /.well-known/openid-configuration, status: 405}
+      - {path: /.well-known/oauth-authorization-server, status: 405}

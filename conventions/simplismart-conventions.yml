@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.simplismart.ai/model-suite/settings/api-keys + openapi/*.yml
+summary: Cross-cutting request/response semantics for the Simplismart inference and training APIs.
+authentication:
+  style: bearer
+  scheme: http bearer (JWT)
+  header: Authorization
+  format: "Authorization: Bearer <API_KEY>"
+  key_management: API keys are generated per organisation under Settings -> API Keys, carry an expiry (or Never), and can be deleted for immediate revocation.
+  docs: https://docs.simplismart.ai/model-suite/settings/api-keys
+  cross_ref: authentication/simplismart-authentication.yml
+inference_compatibility:
+  chat_completions: OpenAI-compatible /chat/completions surface; usable with OpenAI SDKs by pointing base_url at https://api.simplismart.live and using a Simplismart API key.
+idempotency:
+  supported: false
+  note: No idempotency-key header or parameter is documented for the inference or training endpoints.
+pagination:
+  in_spec: false
+  note: List endpoints (deployments, model repos, training jobs) accept offset/count via the SDK/CLI (ModelRepoListParams offset/count) but pagination is not declared in the published mini-specs.
+  params: [offset, count]
+request_tracing:
+  header: none-in-spec
+  note: The CLI supports a `--trace-id` / correlation id (auto-generated per request); the training LLM-metrics API keys off request_id.
+versioning:
+  scheme: none-explicit
+  note: No global API version path/header; individual model endpoints are versioned in the resource name (e.g. Whisper /model/v2/infer/whisper vs /model/infer/whisper).
+error_envelope:
+  field: detail
+  format: json
+  cross_ref: errors/simplismart-problem-types.yml
+rate_limiting:
+  request_rate_headers: none-documented
+  quotas: GPU/compute quotas (default 1x H100 + 1x L40 per org) govern training/compilation/deployment concurrency, not per-request rate limits.
+  quotas_docs: https://docs.simplismart.ai/model-suite/settings/quotas
+metadata:
+  note: Deployments, model repos, and secrets are scoped to an organisation (org_id / ORG_ID) and optionally to Workspaces.

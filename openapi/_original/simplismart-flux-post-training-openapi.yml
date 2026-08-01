@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  title: Simplismart Training API
+  version: 1.0.0
+  description: API to trigger training using Flux and upload dataset in a zip file.
+paths:
+  /api/flux/train/:
+    post:
+      summary: Train model with a dataset
+      description: >-
+        Trigger a model training session by uploading a zip file dataset and
+        providing training parameters.
+      operationId: trainModel
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                trigger_word:
+                  type: string
+                  description: The trigger word for the training session.
+                dataset_file:
+                  type: string
+                  format: binary
+                  description: The dataset file in zip format.
+                org:
+                  type: string
+                  description: The organization name for the training.
+                request_id:
+                  type: string
+                  description: A unique identifier for the request.
+                rank:
+                  type: integer
+                  description: The rank to start the training session with.
+                steps:
+                  type: integer
+                  description: The number of training steps.
+                lr:
+                  type: number
+                  format: float
+                  description: The learning rate for the training process.
+                optimizers:
+                  type: string
+                  description: The optimizer to be used for training.
+              required:
+                - trigger_word
+                - dataset_file
+                - org
+                - request_id
+                - rank
+                - steps
+                - lr
+                - optimizers
+      responses:
+        '200':
+          description: Training session triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    job_id:
+                      type: string
+                      description: The unique identifier of the job.
+                    status:
+                      type: string
+                      enum:
+                        - COMPLETED
+                        - IN_PROGRESS
+                        - FAILED
+                      description: The current status of the training job.
+                    runDuration:
+                      type: integer
+                      description: The duration of the training run in milliseconds.
+                    lora_id:
+                      type: string
+                      description: The ID associated with the LoRA model.
+              example:
+                - job_id: abc123
+                  status: COMPLETED
+                  runDuration: 2987764
+                  lora_id: lora_001
+        '400':
+          description: Bad request. Missing or incorrect parameters.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid input or missing dataset file.
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: >-
+                      Internal server error occurred while processing the
+                      request.

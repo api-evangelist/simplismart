@@ -1,0 +1,110 @@
+openapi: 3.0.0
+info:
+  title: Simplismart Training Suite API
+  description: API for managing training jobs in the Simplismart training suite.
+  version: 1.0.0
+servers:
+  - url: https://training-suite.simplismart.ai
+    description: Simplismart Training Suite API
+paths:
+  /api/llm/training_job/list/:
+    get:
+      summary: Retrieve a list of all training jobs
+      description: Fetches the list of training jobs associated with an Org.
+      operationId: listTrainingJobs
+      parameters:
+        - name: org_id
+          in: query
+          required: true
+          description: The unique identifier for the organization (UUID format).
+          schema:
+            type: string
+            example: 155db1fc-73ba-46e4-9de6-308f2521c349
+      responses:
+        '200':
+          description: A list of training jobs returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingJobList'
+        '400':
+          description: Bad request due to missing or invalid parameters.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing or invalid org_id parameter.
+        '401':
+          description: Unauthorized, the request lacks valid credentials.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized access. Please provide a valid token.
+        '404':
+          description: Not found, the requested resource could not be found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Training job list not found for the provided org_id.
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: An unexpected error occurred. Please try again later.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    TrainingJob:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the training job.
+        name:
+          type: string
+          description: The name of the training job.
+        status:
+          type: string
+          description: Current status of the training job.
+          enum:
+            - pending
+            - running
+            - completed
+            - failed
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the training job was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the training job was last updated.
+    TrainingJobList:
+      type: object
+      properties:
+        training_jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingJob'
+security:
+  - BearerAuth: []

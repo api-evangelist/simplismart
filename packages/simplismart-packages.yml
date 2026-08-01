@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://pypi.org/pypi/simplismart-sdk/json
+packages:
+  - language: python
+    registry: pypi
+    name: simplismart-sdk
+    version: 0.1.8
+    url: https://pypi.org/project/simplismart-sdk/
+    install: pip install simplismart-sdk
+    summary: Python SDK for Simplismart API - Deploy models, manage deployments, and query usage analytics
+    docs: https://docs.simplismart.ai/sdk/python/overview
+    official: true
+    provides:
+      - kind: sdk
+        language: python
+        entrypoint: "from simplismart import Simplismart"
+      - kind: cli
+        command: simplismart
+        note: The `simplismart` CLI ships inside the simplismart-sdk package.
+notes:
+  - No npm / JavaScript client library published (registry.npmjs.org 404 for simplismart and simplismart-sdk as of 2026-07-21).
+  - The OpenAI-compatible /chat/completions inference endpoint (base https://api.simplismart.live) works with any OpenAI SDK using a Simplismart API key as the bearer token.
