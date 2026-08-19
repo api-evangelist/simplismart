@@ -1,0 +1,178 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Flux Training API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flux Training",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a new Flux training job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/api/flux/train/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <ACCESS_TOKEN>"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "trigger_word",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "rank",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "steps",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "lr",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "optimizers",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "high_resolution_mode",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "org",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "dataset_file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit a new Flux training job with the specified configuration, training data, and metadata."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of all Flux training jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/api/flux/training_job/list/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <ACCESS_TOKEN>"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d",
+                "type": "query",
+                "description": "The unique identifier of the organization for which the training jobs are being retrieved."
+              }
+            ]
+          },
+          "docs": "Fetches a list of all Flux training jobs associated with the specified organization. Each job includes details such as its ID, name, status, and other metadata."
+        },
+        {
+          "info": {
+            "name": "Retrieve details of a specific Flux training job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/api/flux/training_job/get/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <ACCESS_TOKEN>"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d",
+                "type": "query",
+                "description": "Organization ID to which the training job belongs."
+              },
+              {
+                "name": "lora_id",
+                "value": "3fe92c25-e5fd-4281-93df-5aa886064dbd",
+                "type": "query",
+                "description": "Unique identifier for the Flux training job."
+              }
+            ]
+          },
+          "docs": "Fetch metadata and configuration details of a Flux training job identified by the provided lora_id and org_id."
+        },
+        {
+          "info": {
+            "name": "Retrieve Flux training metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/api/flux/training_job/get/mlflow-metrics/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <ACCESS_TOKEN>"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d",
+                "type": "query",
+                "description": "The unique identifier of the organization for which the metrics are being requested."
+              },
+              {
+                "name": "request_id",
+                "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e",
+                "type": "query",
+                "description": "A unique identifier corresponding to the training job whose metrics are being fetched."
+              }
+            ]
+          },
+          "docs": "This endpoint allows you to fetch performance metrics for a specific Flux training job. Metrics include training loss and other relevant statistics logged during the training process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Llm API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Llm",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of all training jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/api/llm/training_job/list/",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier for the organization (UUID format)."
+              }
+            ]
+          },
+          "docs": "Fetches the list of training jobs associated with an Org."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

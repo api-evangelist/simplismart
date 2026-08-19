@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Training API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Training",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a new LLM/VLM training job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/job/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <jwt-token>"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "org",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "experiment_name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "dataset_config",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "model_details",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "train_config",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "dataset_details",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "infra_config",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit a new training job with dataset configuration, model details, training configuration, and infrastructure requirements."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of all LLM/VLM training jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/job/list/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <jwt-token>"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4f",
+                "type": "query",
+                "description": "The unique identifier of the organization for which the training jobs are being retrieved."
+              }
+            ]
+          },
+          "docs": "Fetches a list of all LLM or VLM training jobs associated with the specified organization. Each job includes details such as its ID, name, status, creation time, and other metadata."
+        },
+        {
+          "info": {
+            "name": "Retrieve details of a specific LLM/VLM training job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/job/get/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <jwt-token>"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4f",
+                "type": "query",
+                "description": "Organization ID to which the training job belongs."
+              },
+              {
+                "name": "request_id",
+                "value": "3fe92c25-e5fd-4281-93df-5aa886064dbd",
+                "type": "query",
+                "description": "Unique identifier for the training job request."
+              }
+            ]
+          },
+          "docs": "Fetch metadata and configuration details of a training job identified by the provided request_id and org_id."
+        },
+        {
+          "info": {
+            "name": "Retrieve LLM/VLM training metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/job/metrics/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <jwt-token>"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4f",
+                "type": "query",
+                "description": "The unique identifier of the organization for which the metrics are being requested."
+              },
+              {
+                "name": "request_id",
+                "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e",
+                "type": "query",
+                "description": "A unique identifier corresponding to the training job whose metrics are being fetched."
+              }
+            ]
+          },
+          "docs": "This endpoint allows you to fetch performance metrics for a specific LLM or VLM training job. Metrics include training accuracy, validation loss, and other relevant statistics logged during the training process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1010 @@
+{
+  "item": [
+    {
+      "id": "eccc4199-21be-4b1e-8bcb-f790234bd2bc",
+      "name": "Flux Training",
+      "description": {
+        "content": "Flux model training endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d69d8d07-43f1-4654-9cb0-7bb95164f176",
+          "name": "Start a new Flux training job",
+          "request": {
+            "name": "Start a new Flux training job",
+            "description": {
+              "content": "Submit a new Flux training job with the specified configuration, training data, and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "flux",
+                "train",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trigger_word",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The trigger word to be associated with generated images."
+                },
+                {
+                  "key": "dataset_file",
+                  "type": "file",
+                  "description": "(Required) Dataset file containing training images."
+                },
+                {
+                  "key": "org",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Organization ID associated with the training job."
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name assigned to the Flux training job."
+                },
+                {
+                  "key": "rank",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The rank parameter for training."
+                },
+                {
+                  "key": "steps",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Number of training steps."
+                },
+                {
+                  "key": "lr",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Learning rate for training."
+                },
+                {
+                  "key": "optimizers",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optimizer to use for training."
+                },
+                {
+                  "key": "high_resolution_mode",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Whether to enable high resolution mode."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fe08c3d0-0514-465b-8d7a-79de41d7f70a",
+              "name": "Flux training job submitted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "train",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer token for authentication and authorization.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The trigger word to be associated with generated images.",
+                        "type": "text/plain"
+                      },
+                      "key": "trigger_word",
+                      "value": "portrait of a person",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Dataset file containing training images.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Organization ID associated with the training job.",
+                        "type": "text/plain"
+                      },
+                      "key": "org",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Name assigned to the Flux training job.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "my_first_flux_job",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The rank parameter for training.",
+                        "type": "text/plain"
+                      },
+                      "key": "rank",
+                      "value": "128",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Number of training steps.",
+                        "type": "text/plain"
+                      },
+                      "key": "steps",
+                      "value": "1000",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Learning rate for training.",
+                        "type": "text/plain"
+                      },
+                      "key": "lr",
+                      "value": "0.0001",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optimizer to use for training.",
+                        "type": "text/plain"
+                      },
+                      "key": "optimizers",
+                      "value": "Adam",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether to enable high resolution mode.",
+                        "type": "text/plain"
+                      },
+                      "key": "high_resolution_mode",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lora_id\": \"string\",\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "716151b2-3e46-4371-b13d-955396349cef",
+          "name": "Retrieve a list of all Flux training jobs",
+          "request": {
+            "name": "Retrieve a list of all Flux training jobs",
+            "description": {
+              "content": "Fetches a list of all Flux training jobs associated with the specified organization. Each job includes details such as its ID, name, status, and other metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "flux",
+                "training_job",
+                "list",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the organization for which the training jobs are being retrieved."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea156f3a-e2a8-4c32-9daf-f341c8ce6737",
+              "name": "Successful response containing a list of Flux training jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It must be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"lora_id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"RUNNING\",\n      \"created_at\": \"1990-09-14T13:40:23.730Z\",\n      \"trigger_word\": \"string\",\n      \"steps\": \"string\"\n    },\n    {\n      \"lora_id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"CANCELED\",\n      \"created_at\": \"2007-06-02T12:51:30.673Z\",\n      \"trigger_word\": \"string\",\n      \"steps\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "594c294a-5e80-474f-ba1f-ac9dcb3a58f3",
+              "name": "Invalid request, such as missing or incorrect parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It must be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c3a4846-2527-4c66-82c2-55a3f4ee0aee",
+              "name": "Unauthorized access due to invalid or missing authorization token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It must be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6af97d6-a358-483c-8c4e-eeff023da4bc",
+              "name": "Internal server error while retrieving the training jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It must be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "810bcbc1-f19f-44dd-9be8-b2baa9bc886a",
+          "name": "Retrieve details of a specific Flux training job",
+          "request": {
+            "name": "Retrieve details of a specific Flux training job",
+            "description": {
+              "content": "Fetch metadata and configuration details of a Flux training job identified by the provided lora_id and org_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "flux",
+                "training_job",
+                "get",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>",
+                  "description": "(Required) Organization ID to which the training job belongs."
+                },
+                {
+                  "disabled": false,
+                  "key": "lora_id",
+                  "value": "<string>",
+                  "description": "(Required) Unique identifier for the Flux training job."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5034b0ea-d34d-45b0-9a39-a8da9c86f4cf",
+              "name": "The requested Flux training job details were retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "get",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    },
+                    {
+                      "key": "lora_id",
+                      "value": "3fe92c25-e5fd-4281-93df-5aa886064dbd"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer token for authentication and authorization.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lora_id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"string\",\n  \"created_at\": \"2010-03-23T14:18:51.467Z\",\n  \"config\": {},\n  \"progress\": 7435.35710130453,\n  \"trigger_word\": \"string\",\n  \"steps\": \"string\",\n  \"learning_rate\": \"string\",\n  \"output_model\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b41ef0b1-b0c6-4b07-8028-f5f50c626fb4",
+          "name": "Retrieve Flux training metrics",
+          "request": {
+            "name": "Retrieve Flux training metrics",
+            "description": {
+              "content": "This endpoint allows you to fetch performance metrics for a specific Flux training job. Metrics include training loss and other relevant statistics logged during the training process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "flux",
+                "training_job",
+                "get",
+                "mlflow-metrics",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the organization for which the metrics are being requested."
+                },
+                {
+                  "disabled": false,
+                  "key": "request_id",
+                  "value": "<string>",
+                  "description": "(Required) A unique identifier corresponding to the training job whose metrics are being fetched."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e92afb7-d06f-40fe-a59f-3a36abb309c8",
+              "name": "Successful response containing the requested metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "get",
+                    "mlflow-metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    },
+                    {
+                      "key": "request_id",
+                      "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It should be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metrics\": [\n    {\n      \"key\": \"string\",\n      \"value\": 487.07972609407955,\n      \"timestamp\": \"2022-12-26T01:46:24.443Z\",\n      \"step\": 3676\n    },\n    {\n      \"key\": \"string\",\n      \"value\": 9109.393723637155,\n      \"timestamp\": \"1990-08-01T06:20:58.278Z\",\n      \"step\": 5018\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf02b9b7-7ecf-4f65-8e70-ed3985ea21fa",
+              "name": "Invalid request, such as missing or incorrect parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "get",
+                    "mlflow-metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    },
+                    {
+                      "key": "request_id",
+                      "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It should be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1c922e9-cc5d-44dd-bc50-3e97d4d8a84e",
+              "name": "Unauthorized access due to invalid or missing authorization token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "get",
+                    "mlflow-metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    },
+                    {
+                      "key": "request_id",
+                      "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It should be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d29dddff-d83a-4d89-a668-96c11bcb06af",
+              "name": "Training job or metrics not found for the provided request_id and org_id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "get",
+                    "mlflow-metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    },
+                    {
+                      "key": "request_id",
+                      "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It should be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e8c9fd48-c4e1-43fe-a655-6136f73ac9df",
+              "name": "Internal server error while retrieving the metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "get",
+                    "mlflow-metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "0bf00b43-430a-4ca3-a8b3-b13cc8dc6d4d"
+                    },
+                    {
+                      "key": "request_id",
+                      "value": "c3c840b8-aee0-4b76-9da8-0ac4e0c0df8e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The authorization token used to authenticate the request. It should be provided in the \"Bearer {token}\" format.",
+                    "key": "Authorization",
+                    "value": "Bearer <ACCESS_TOKEN>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.simplismart.live",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e1346443-4f7c-4756-8e98-d2d9f9ab2125",
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Flux Training API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "High-capacity LLM for complex tasks",
+      "type": "text/plain"
+    }
+  }
+}

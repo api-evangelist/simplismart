@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Flux API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flux",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of flux training jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/api/flux/training_job/list/",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier for the organization (UUID format)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetches the list of training jobs associated with an Org using a specified `org_id`."
+        },
+        {
+          "info": {
+            "name": "Train model with a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/api/flux/train/",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "trigger_word",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "dataset_file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "org",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "request_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "rank",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "steps",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "lr",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "optimizers",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Trigger a model training session by uploading a zip file dataset and providing training parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

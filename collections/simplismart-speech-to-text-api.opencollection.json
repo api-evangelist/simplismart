@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Speech to Text API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Speech to Text",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transcribe or translate audio using Whisper Large V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/model/v2/infer/whisper",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process audio files for transcription or translation with advanced options"
+        },
+        {
+          "info": {
+            "name": "Transcribe or translate audio using Whisper Large V3",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/model/infer/whisper",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process audio files for transcription or translation with enhanced language support.\nSupports multiple audio formats and provides detailed word-level timestamps and speaker diarization.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

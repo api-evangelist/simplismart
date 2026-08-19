@@ -1,0 +1,815 @@
+{
+  "item": [
+    {
+      "id": "f45907ed-e9c4-4ea3-bfd3-b149f72aa995",
+      "name": "Flux",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5958d8a7-66dc-472f-b61f-3a2927e75c99",
+          "name": "Retrieve a list of flux training jobs",
+          "request": {
+            "name": "Retrieve a list of flux training jobs",
+            "description": {
+              "content": "Fetches the list of training jobs associated with an Org using a specified `org_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "flux",
+                "training_job",
+                "list",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier for the organization (UUID format)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cadc90c2-bb3d-4690-813f-e33a17edcebe",
+              "name": "A list of flux training jobs returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "155db1fc-73ba-46e4-9de6-308f2521c349"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"training_jobs\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"running\",\n      \"created_at\": \"2009-09-10T22:19:17.552Z\",\n      \"updated_at\": \"1996-04-13T12:12:24.500Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"completed\",\n      \"created_at\": \"2004-08-13T23:11:18.797Z\",\n      \"updated_at\": \"1983-09-14T09:32:11.630Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dcc6970-6f06-432d-bebf-96cb76e152c8",
+              "name": "Bad request due to missing or invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "155db1fc-73ba-46e4-9de6-308f2521c349"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing or invalid org_id parameter.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89dab054-dab6-4b3f-8458-00d0cf3bc72c",
+              "name": "Unauthorized, the request lacks valid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "155db1fc-73ba-46e4-9de6-308f2521c349"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized access. Please provide a valid token.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d2a7f30-c58a-4718-a093-062cf9aa2117",
+              "name": "Not found, the requested resource could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "155db1fc-73ba-46e4-9de6-308f2521c349"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Flux training job list not found for the provided org_id.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2325ea19-42ce-4298-9b3e-11e613216a40",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "training_job",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "155db1fc-73ba-46e4-9de6-308f2521c349"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"An unexpected error occurred. Please try again later.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4d25a13-395f-44bb-ad2c-5626654ae8e5",
+          "name": "Train model with a dataset",
+          "request": {
+            "name": "Train model with a dataset",
+            "description": {
+              "content": "Trigger a model training session by uploading a zip file dataset and providing training parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "flux",
+                "train",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trigger_word",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The trigger word for the training session."
+                },
+                {
+                  "key": "dataset_file",
+                  "type": "file",
+                  "description": "(Required) The dataset file in zip format."
+                },
+                {
+                  "key": "org",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The organization name for the training."
+                },
+                {
+                  "key": "request_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) A unique identifier for the request."
+                },
+                {
+                  "key": "rank",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "(Required) The rank to start the training session with."
+                },
+                {
+                  "key": "steps",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "(Required) The number of training steps."
+                },
+                {
+                  "key": "lr",
+                  "value": "<float>",
+                  "type": "text",
+                  "description": "(Required) The learning rate for the training process."
+                },
+                {
+                  "key": "optimizers",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The optimizer to be used for training."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c008413a-a812-44a3-ac7d-0b5f2272d312",
+              "name": "Training session triggered successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "train",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The trigger word for the training session.",
+                        "type": "text/plain"
+                      },
+                      "key": "trigger_word",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The dataset file in zip format.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The organization name for the training.",
+                        "type": "text/plain"
+                      },
+                      "key": "org",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) A unique identifier for the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "request_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The rank to start the training session with.",
+                        "type": "text/plain"
+                      },
+                      "key": "rank",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The number of training steps.",
+                        "type": "text/plain"
+                      },
+                      "key": "steps",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The learning rate for the training process.",
+                        "type": "text/plain"
+                      },
+                      "key": "lr",
+                      "value": "<float>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The optimizer to be used for training.",
+                        "type": "text/plain"
+                      },
+                      "key": "optimizers",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"job_id\": \"abc123\",\n    \"status\": \"COMPLETED\",\n    \"runDuration\": 2987764,\n    \"lora_id\": \"lora_001\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "466b1ad3-3201-4206-98c8-27a11ee75e1f",
+              "name": "Bad request. Missing or incorrect parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "train",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The trigger word for the training session.",
+                        "type": "text/plain"
+                      },
+                      "key": "trigger_word",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The dataset file in zip format.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The organization name for the training.",
+                        "type": "text/plain"
+                      },
+                      "key": "org",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) A unique identifier for the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "request_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The rank to start the training session with.",
+                        "type": "text/plain"
+                      },
+                      "key": "rank",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The number of training steps.",
+                        "type": "text/plain"
+                      },
+                      "key": "steps",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The learning rate for the training process.",
+                        "type": "text/plain"
+                      },
+                      "key": "lr",
+                      "value": "<float>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The optimizer to be used for training.",
+                        "type": "text/plain"
+                      },
+                      "key": "optimizers",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid input or missing dataset file.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3384c834-c9c7-4e66-b8a3-f6ca5fbe521b",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "flux",
+                    "train",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The trigger word for the training session.",
+                        "type": "text/plain"
+                      },
+                      "key": "trigger_word",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The dataset file in zip format.",
+                        "type": "text/plain"
+                      },
+                      "key": "dataset_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The organization name for the training.",
+                        "type": "text/plain"
+                      },
+                      "key": "org",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) A unique identifier for the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "request_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The rank to start the training session with.",
+                        "type": "text/plain"
+                      },
+                      "key": "rank",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The number of training steps.",
+                        "type": "text/plain"
+                      },
+                      "key": "steps",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The learning rate for the training process.",
+                        "type": "text/plain"
+                      },
+                      "key": "lr",
+                      "value": "<float>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The optimizer to be used for training.",
+                        "type": "text/plain"
+                      },
+                      "key": "optimizers",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal server error occurred while processing the request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.simplismart.live",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "35e9d815-6ec5-4aee-9ff4-8269c0786cc8",
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Flux API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "High-capacity LLM for complex tasks",
+      "type": "text/plain"
+    }
+  }
+}

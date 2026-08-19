@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat Completion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create chat completion with Llama 70B",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a chat completion for given messages with streaming support"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

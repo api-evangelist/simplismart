@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "4a745ebd-c96b-429a-a627-a76c60148957",
+      "name": "Model",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31239fe9-aad8-460f-bba8-0ee43abad9e0",
+          "name": "Generate images using the Flux model",
+          "request": {
+            "name": "Generate images using the Flux model",
+            "description": {
+              "content": "This endpoint generates images based on a prompt using the Flux model, with optional parameters for customization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "model",
+                "infer",
+                "flux"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "749f6159-de94-4b93-9acd-41dc4131a498",
+              "name": "Successfully generated images",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "flux"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer token for authentication",
+                    "key": "Authorization",
+                    "value": "Bearer "
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"https://example.com/generated_image.png\",\n    \"https://example.com/generated_image.png\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee3835d0-925f-46d1-9d8d-50fd55ed8d6e",
+              "name": "Bad request, invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "flux"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer token for authentication",
+                    "key": "Authorization",
+                    "value": "Bearer "
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ca737dc-a62f-4cc4-8678-257eb70e7862",
+              "name": "Unauthorized, invalid or missing authentication",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "flux"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer token for authentication",
+                    "key": "Authorization",
+                    "value": "Bearer "
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c048a1b5-ddc8-44c4-b910-85c5758db279",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "flux"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer token for authentication",
+                    "key": "Authorization",
+                    "value": "Bearer "
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.simplismart.live",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3975dd51-dd03-4f11-8123-6600225604ba",
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Model API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "High-capacity LLM for complex tasks",
+      "type": "text/plain"
+    }
+  }
+}

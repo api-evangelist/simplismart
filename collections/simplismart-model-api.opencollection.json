@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Model API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Model",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate images using the Flux model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.simplismart.live/model/infer/flux",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "This endpoint generates images based on a prompt using the Flux model, with optional parameters for customization.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

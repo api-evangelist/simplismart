@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Metrics API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get metrics for any LLM chat completion request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.simplismart.live/get/metrics/:request_id",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the chat completion request"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed metrics about token counts, processing time, and performance statistics"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

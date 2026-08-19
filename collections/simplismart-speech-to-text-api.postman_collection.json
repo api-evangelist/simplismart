@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "8e0472a6-ed04-43e1-9d0e-1e5a8dcf7a37",
+      "name": "Speech to Text",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d4d876db-74f1-41c1-809d-022a189c4a6b",
+          "name": "Transcribe or translate audio using Whisper Large V2",
+          "request": {
+            "name": "Transcribe or translate audio using Whisper Large V2",
+            "description": {
+              "content": "Process audio files for transcription or translation with advanced options",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "model",
+                "v2",
+                "infer",
+                "whisper"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"audio_data\": \"<string>\",\n  \"language\": \"<string>\",\n  \"task\": \"<string>\",\n  \"initial_prompt\": \"<string>\",\n  \"beam_size\": 5,\n  \"best_of\": 5,\n  \"word_timestamps\": 0,\n  \"diarization\": 0,\n  \"vad_filter\": 1,\n  \"without_timestamps\": 0,\n  \"streaming\": 0,\n  \"min_speakers\": 0,\n  \"max_speakers\": 0,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"min_duration_off\": 0,\n  \"min_duration_on\": 0,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363,\n  \"pad_offset\": 0,\n  \"pad_onset\": 0,\n  \"max_duration\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd4b2465-b557-4c32-b85c-8a979a06ef23",
+              "name": "Successful transcription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "v2",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"beam_size\": 5,\n  \"best_of\": 5,\n  \"word_timestamps\": 1,\n  \"diarization\": 0,\n  \"streaming\": 0,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transcription\": [\n    \"string\",\n    \"string\"\n  ],\n  \"segments\": [\n    {\n      \"start\": 6452.390064104211,\n      \"end\": 9102.78144404372,\n      \"text\": \"string\",\n      \"words\": [\n        {\n          \"word\": \"string\",\n          \"start\": 3962.7665295983816,\n          \"end\": 3425.7275547663203\n        },\n        {\n          \"word\": \"string\",\n          \"start\": 7234.1860329977035,\n          \"end\": 5651.30558950117\n        }\n      ]\n    },\n    {\n      \"start\": 7658.905224018115,\n      \"end\": 4759.419203539101,\n      \"text\": \"string\",\n      \"words\": [\n        {\n          \"word\": \"string\",\n          \"start\": 5576.747535641133,\n          \"end\": 6773.4860502913925\n        },\n        {\n          \"word\": \"string\",\n          \"start\": 7085.408845302581,\n          \"end\": 5558.878475408512\n        }\n      ]\n    }\n  ],\n  \"request_time\": 8046.380950080796,\n  \"language\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9c81055-fbeb-432d-8361-a8e29245148e",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "v2",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"beam_size\": 5,\n  \"best_of\": 5,\n  \"word_timestamps\": 1,\n  \"diarization\": 0,\n  \"streaming\": 0,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"status\": 2377\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "409bf534-2823-4683-8efc-7a981b00ec74",
+              "name": "Unauthorized - Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "v2",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"beam_size\": 5,\n  \"best_of\": 5,\n  \"word_timestamps\": 1,\n  \"diarization\": 0,\n  \"streaming\": 0,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70936b44-36b2-45db-87e0-a44a87a32f7f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "v2",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"beam_size\": 5,\n  \"best_of\": 5,\n  \"word_timestamps\": 1,\n  \"diarization\": 0,\n  \"streaming\": 0,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05d458b6-68b6-4ca8-8d0a-3b569d6f0aff",
+          "name": "Transcribe or translate audio using Whisper Large V3",
+          "request": {
+            "name": "Transcribe or translate audio using Whisper Large V3",
+            "description": {
+              "content": "Process audio files for transcription or translation with enhanced language support.\nSupports multiple audio formats and provides detailed word-level timestamps and speaker diarization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "model",
+                "infer",
+                "whisper"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"audio_data\": \"<string>\",\n  \"language\": \"<string>\",\n  \"task\": \"<string>\",\n  \"initial_prompt\": \"<string>\",\n  \"beam_size\": 5,\n  \"best_of\": 5,\n  \"word_timestamps\": false,\n  \"diarization\": false,\n  \"vad_filter\": true,\n  \"without_timestamps\": false,\n  \"streaming\": false,\n  \"min_speakers\": 0,\n  \"max_speakers\": 0,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"min_duration_off\": 0,\n  \"min_duration_on\": 0,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363,\n  \"pad_offset\": 0,\n  \"pad_onset\": 0,\n  \"max_duration\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "541deb74-8470-40ae-bab7-419d0c78d33a",
+              "name": "Successful transcription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"word_timestamps\": true,\n  \"diarization\": false,\n  \"streaming\": false,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transcription\": [\n    \"Hello, this is a test.\",\n    \"The audio quality is good.\"\n  ],\n  \"request_time\": 2.5,\n  \"language\": \"en\",\n  \"segments\": [\n    {\n      \"start\": 0,\n      \"end\": 2.5,\n      \"text\": \"Hello, this is a test.\",\n      \"words\": [\n        {\n          \"word\": \"Hello\",\n          \"start\": 0,\n          \"end\": 0.5\n        },\n        {\n          \"word\": \"Hello\",\n          \"start\": 0,\n          \"end\": 0.5\n        }\n      ]\n    },\n    {\n      \"start\": 0,\n      \"end\": 2.5,\n      \"text\": \"Hello, this is a test.\",\n      \"words\": [\n        {\n          \"word\": \"Hello\",\n          \"start\": 0,\n          \"end\": 0.5\n        },\n        {\n          \"word\": \"Hello\",\n          \"start\": 0,\n          \"end\": 0.5\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65740607-a837-430f-a16a-29919fb47451",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"word_timestamps\": true,\n  \"diarization\": false,\n  \"streaming\": false,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d3a75a1-8664-4ba9-9c20-0c9653b326cd",
+              "name": "Unauthorized - Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"word_timestamps\": true,\n  \"diarization\": false,\n  \"streaming\": false,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05f2a513-24a2-4e7f-a1c3-d7579fcf19ca",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "infer",
+                    "whisper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"audio_data\": \"base64_encoded_audio_content\",\n  \"language\": \"en\",\n  \"task\": \"transcribe\",\n  \"word_timestamps\": true,\n  \"diarization\": false,\n  \"streaming\": false,\n  \"batch_size\": 24,\n  \"length_penalty\": 1,\n  \"patience\": 1,\n  \"vad_onset\": 0.5,\n  \"vad_offset\": 0.363\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.simplismart.live",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "378d1584-2d2e-441e-b178-d9adec861445",
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Speech to Text API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "High-capacity LLM for complex tasks",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "667aa6e9-d992-47b9-848d-d3112596bcc7",
+      "name": "Metrics",
+      "description": {
+        "content": "Performance and usage metrics for LLM requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26c93786-76c3-4ee3-95c8-72a669e4f36d",
+          "name": "Get metrics for any LLM chat completion request",
+          "request": {
+            "name": "Get metrics for any LLM chat completion request",
+            "description": {
+              "content": "Retrieve detailed metrics about token counts, processing time, and performance statistics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get",
+                "metrics",
+                ":request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "request_id",
+                  "description": "(Required) The ID of the chat completion request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf642304-a190-47f3-8408-de5bbb725b3c",
+              "name": "Successful metrics retrieval",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    "metrics",
+                    ":request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) The ID of the chat completion request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input_tokens\": 41,\n  \"output_tokens\": 758,\n  \"time_taken\": 1.25,\n  \"time_after_first_token\": 1.21\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ba4361e-74ca-403b-abc5-3bd021d75d49",
+              "name": "Metrics not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    "metrics",
+                    ":request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) The ID of the chat completion request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "864ea711-4c10-43a9-8c4d-d0a6db0d5f44",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get",
+                    "metrics",
+                    ":request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) The ID of the chat completion request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.simplismart.live",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a90278f-cea7-4132-839a-4a0fe908a48f",
+    "name": "DeepSeek R1 Distil Qwen-32B Chat Completion Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "High-capacity LLM for complex tasks",
+      "type": "text/plain"
+    }
+  }
+}
