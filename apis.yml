@@ -36,6 +36,18 @@ image: https://cdn.prod.website-files.com/688cd7a9d1e409a52d962d73/689a55919a5ee
 tags:
 - Company
 - Artificial Intelligence
+- Machine-Learning
+- Inference
+- LLM
+- Model Deployment
+- Fine-Tuning
+- MLOps
+- GPU
+- Speech-to-Text
+- Image-Generation
+tags_raw:
+- Company
+- Artificial Intelligence
 - Machine Learning
 - Inference
 - LLM
@@ -87,6 +99,8 @@ apis:
   humanURL: https://docs.simplismart.ai/api-reference/introduction
   baseURL: https://api.simplismart.live
   tags:
+  - LLM
+  tags_raw:
   - Llm
   properties:
   - type: OpenAPI
@@ -117,6 +131,8 @@ apis:
   humanURL: https://docs.simplismart.ai/api-reference/introduction
   baseURL: https://api.simplismart.live
   tags:
+  - Speech-to-Text
+  tags_raw:
   - Speech to Text
   properties:
   - type: OpenAPI
