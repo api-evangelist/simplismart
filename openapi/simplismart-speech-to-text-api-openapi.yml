@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: DeepSeek R1 Distil Qwen-32B Chat Completion Speech to Text API
-  description: High-capacity LLM for complex tasks
+  title: Simplismart Speech to Text API
   version: 1.0.0
+  description: 'Operations tagged Speech to Text across 2 of this provider''s published API definitions: simplismart-whisper-v2-openapi.yml, simplismart-whisper-v3-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://api.simplismart.live
-  description: DeepSeek-R1-Distill-Qwen-32B Proxy Server
+- url: https://http.whisper.proxy.prod.s9t.link
+  description: Production server
 security:
 - BearerAuth: []
 tags:
@@ -55,6 +55,9 @@ paths:
           description: Unauthorized - Invalid token
         '500':
           description: Internal server error
+    servers:
+    - url: https://http.whisper.proxy.prod.s9t.link
+      description: Production server
   /model/infer/whisper:
     post:
       tags:
@@ -97,8 +100,20 @@ paths:
           description: Unauthorized - Invalid token
         '500':
           description: Internal server error
+    servers:
+    - url: https://http.whisper.proxy.prod.s9t.link
+      description: Production LLM Proxy Server
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        status:
+          type: integer
+          description: Error status code
     WhisperV2Response:
       type: object
       properties:
@@ -139,200 +154,6 @@ components:
         language:
           type: string
           description: Detected or specified language
-    WhisperV3Request:
-      type: object
-      required:
-      - audio_data
-      - language
-      - task
-      properties:
-        audio_data:
-          type: string
-          description: 'TEXT FIELD: This is a string field (not a file upload). Provide the audio as a base64-encoded string. First convert your audio file (.mp3, .wav, .flac) to base64, then paste the resulting string here.'
-          example: base64_encoded_audio_content
-        language:
-          type: string
-          description: Language code (e.g. 'en' for English)
-          example: en
-        task:
-          type: string
-          enum:
-          - transcribe
-          - translate
-          description: Task type - transcribe in source language or translate to English
-          example: transcribe
-        initial_prompt:
-          type: string
-          description: Optional starting text prompt for context
-          example: 'Meeting transcript between John and Sarah:'
-        beam_size:
-          type: integer
-          description: Number of parallel sequences evaluated
-          minimum: 1
-          maximum: 5
-          default: 5
-        best_of:
-          type: integer
-          description: Number of best sequences considered
-          minimum: 1
-          maximum: 5
-          default: 5
-        word_timestamps:
-          type: boolean
-          description: Include word-level timestamps
-          default: false
-        diarization:
-          type: boolean
-          description: Enable speaker diarization
-          default: false
-        vad_filter:
-          type: boolean
-          description: Enable voice activity detection filter
-          default: true
-        without_timestamps:
-          type: boolean
-          description: Exclude timestamps from output
-          default: false
-        streaming:
-          type: boolean
-          description: Enable streaming output
-          default: false
-        min_speakers:
-          type: integer
-          description: Minimum number of speakers to detect (0 for automatic)
-          default: 0
-          minimum: 0
-        max_speakers:
-          type: integer
-          description: Maximum number of speakers to detect (0 for automatic)
-          default: 0
-          minimum: 0
-        batch_size:
-          type: integer
-          description: Number of audio samples processed in one batch
-          minimum: 0
-          maximum: 24
-          default: 24
-        length_penalty:
-          type: number
-          description: Penalty for longer sequences (1.0 means no penalty)
-          default: 1
-          minimum: 0
-        patience:
-          type: number
-          description: Beam search patience factor
-          minimum: 0
-          maximum: 1
-          default: 1
-        min_duration_off:
-          type: number
-          description: Minimum duration of silence for a break (seconds)
-          default: 0
-          minimum: 0
-        min_duration_on:
-          type: number
-          description: Minimum duration for speech detection (seconds)
-          default: 0
-          minimum: 0
-        vad_onset:
-          type: number
-          description: Voice activity detection onset threshold
-          minimum: 0
-          maximum: 1
-          default: 0.5
-        vad_offset:
-          type: number
-          description: Voice activity detection offset threshold
-          minimum: 0
-          maximum: 1
-          default: 0.363
-        pad_offset:
-          type: number
-          description: Additional padding at segment end (seconds)
-          default: 0
-          minimum: 0
-        pad_onset:
-          type: number
-          description: Additional padding at segment start (seconds)
-          default: 0
-          minimum: 0
-        max_duration:
-          type: number
-          description: Maximum duration to process (seconds)
-          default: 30
-          minimum: 0
-    WhisperV3Response:
-      type: object
-      required:
-      - transcription
-      - request_time
-      - language
-      properties:
-        transcription:
-          type: array
-          items:
-            type: string
-          description: Array of transcribed text segments
-          example:
-          - Hello, this is a test.
-          - The audio quality is good.
-        segments:
-          type: array
-          items:
-            type: object
-            required:
-            - start
-            - end
-            - text
-            properties:
-              start:
-                type: number
-                description: Start time of segment (seconds)
-                example: 0
-              end:
-                type: number
-                description: End time of segment (seconds)
-                example: 2.5
-              text:
-                type: string
-                description: Transcribed text
-                example: Hello, this is a test.
-              words:
-                type: array
-                items:
-                  type: object
-                  required:
-                  - word
-                  - start
-                  - end
-                  properties:
-                    word:
-                      type: string
-                      example: Hello
-                    start:
-                      type: number
-                      example: 0
-                    end:
-                      type: number
-                      example: 0.5
-                description: Word-level timing information
-        request_time:
-          type: number
-          description: Total processing time in seconds
-          example: 2.5
-        language:
-          type: string
-          description: Detected or specified language
-          example: en
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-        status:
-          type: integer
-          description: Error status code
     WhisperV2Request:
       type: object
       required:
@@ -460,9 +281,197 @@ components:
           type: number
           description: Maximum duration to process
           default: 30
+    WhisperV3Response:
+      type: object
+      required:
+      - transcription
+      - request_time
+      - language
+      properties:
+        transcription:
+          type: array
+          items:
+            type: string
+          description: Array of transcribed text segments
+          example:
+          - Hello, this is a test.
+          - The audio quality is good.
+        segments:
+          type: array
+          items:
+            type: object
+            required:
+            - start
+            - end
+            - text
+            properties:
+              start:
+                type: number
+                description: Start time of segment (seconds)
+                example: 0
+              end:
+                type: number
+                description: End time of segment (seconds)
+                example: 2.5
+              text:
+                type: string
+                description: Transcribed text
+                example: Hello, this is a test.
+              words:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - word
+                  - start
+                  - end
+                  properties:
+                    word:
+                      type: string
+                      example: Hello
+                    start:
+                      type: number
+                      example: 0
+                    end:
+                      type: number
+                      example: 0.5
+                description: Word-level timing information
+        request_time:
+          type: number
+          description: Total processing time in seconds
+          example: 2.5
+        language:
+          type: string
+          description: Detected or specified language
+          example: en
+    WhisperV3Request:
+      type: object
+      required:
+      - audio_data
+      - language
+      - task
+      properties:
+        audio_data:
+          type: string
+          description: 'TEXT FIELD: This is a string field (not a file upload). Provide the audio as a base64-encoded string. First convert your audio file (.mp3, .wav, .flac) to base64, then paste the resulting string here.'
+          example: base64_encoded_audio_content
+        language:
+          type: string
+          description: Language code (e.g. 'en' for English)
+          example: en
+        task:
+          type: string
+          enum:
+          - transcribe
+          - translate
+          description: Task type - transcribe in source language or translate to English
+          example: transcribe
+        initial_prompt:
+          type: string
+          description: Optional starting text prompt for context
+          example: 'Meeting transcript between John and Sarah:'
+        beam_size:
+          type: integer
+          description: Number of parallel sequences evaluated
+          minimum: 1
+          maximum: 5
+          default: 5
+        best_of:
+          type: integer
+          description: Number of best sequences considered
+          minimum: 1
+          maximum: 5
+          default: 5
+        word_timestamps:
+          type: boolean
+          description: Include word-level timestamps
+          default: false
+        diarization:
+          type: boolean
+          description: Enable speaker diarization
+          default: false
+        vad_filter:
+          type: boolean
+          description: Enable voice activity detection filter
+          default: true
+        without_timestamps:
+          type: boolean
+          description: Exclude timestamps from output
+          default: false
+        streaming:
+          type: boolean
+          description: Enable streaming output
+          default: false
+        min_speakers:
+          type: integer
+          description: Minimum number of speakers to detect (0 for automatic)
+          default: 0
+          minimum: 0
+        max_speakers:
+          type: integer
+          description: Maximum number of speakers to detect (0 for automatic)
+          default: 0
+          minimum: 0
+        batch_size:
+          type: integer
+          description: Number of audio samples processed in one batch
+          minimum: 0
+          maximum: 24
+          default: 24
+        length_penalty:
+          type: number
+          description: Penalty for longer sequences (1.0 means no penalty)
+          default: 1
+          minimum: 0
+        patience:
+          type: number
+          description: Beam search patience factor
+          minimum: 0
+          maximum: 1
+          default: 1
+        min_duration_off:
+          type: number
+          description: Minimum duration of silence for a break (seconds)
+          default: 0
+          minimum: 0
+        min_duration_on:
+          type: number
+          description: Minimum duration for speech detection (seconds)
+          default: 0
+          minimum: 0
+        vad_onset:
+          type: number
+          description: Voice activity detection onset threshold
+          minimum: 0
+          maximum: 1
+          default: 0.5
+        vad_offset:
+          type: number
+          description: Voice activity detection offset threshold
+          minimum: 0
+          maximum: 1
+          default: 0.363
+        pad_offset:
+          type: number
+          description: Additional padding at segment end (seconds)
+          default: 0
+          minimum: 0
+        pad_onset:
+          type: number
+          description: Additional padding at segment start (seconds)
+          default: 0
+          minimum: 0
+        max_duration:
+          type: number
+          description: Maximum duration to process (seconds)
+          default: 30
+          minimum: 0
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
       description: JWT token for authentication
+x-refined-from:
+- simplismart-whisper-v2-openapi.yml
+- simplismart-whisper-v3-openapi.yml

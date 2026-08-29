@@ -1,11 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: DeepSeek R1 Distil Qwen-32B Chat Completion API
-  description: High-capacity LLM for complex tasks
+  title: Simplismart Chat Completion API
   version: 1.0.0
+  description: 'Operations tagged Chat Completion across 9 of this provider''s published API definitions: simplismart-deepseek-r1-qwen-32b-openapi.yml, simplismart-devstral-small-openapi.yml, simplismart-gemma3-27b-openapi.yml, simplismart-gemma3-4b-openapi.yml, simplismart-llama-3.3-70b-openapi.yml, simplismart-llama-4-maverick-17b-openapi.yml, simplismart-llama-8b-openapi.yml, simplismart-mixtral-8x7b-openapi.yml, simplismart-qwen-32b-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.simplismart.live
   description: DeepSeek-R1-Distill-Qwen-32B Proxy Server
+- url: https://http.llama-4-maverick-17b-fp8-proxy.yotta-infrastructure.on-prem.clusters.s9t.link
+  description: Production LLM Proxy Server
 security:
 - BearerAuth: []
 tags:
@@ -132,6 +134,9 @@ paths:
           description: Unauthorized - Invalid token
         '500':
           description: Internal server error
+    servers:
+    - url: https://api.simplismart.live
+      description: DeepSeek-R1-Distill-Qwen-32B Proxy Server
 components:
   securitySchemes:
     BearerAuth:
@@ -139,3 +144,13 @@ components:
       scheme: bearer
       bearerFormat: JWT
       description: JWT token for authentication
+x-refined-from:
+- simplismart-deepseek-r1-qwen-32b-openapi.yml
+- simplismart-devstral-small-openapi.yml
+- simplismart-gemma3-27b-openapi.yml
+- simplismart-gemma3-4b-openapi.yml
+- simplismart-llama-3.3-70b-openapi.yml
+- simplismart-llama-4-maverick-17b-openapi.yml
+- simplismart-llama-8b-openapi.yml
+- simplismart-mixtral-8x7b-openapi.yml
+- simplismart-qwen-32b-openapi.yml
