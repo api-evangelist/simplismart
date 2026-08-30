@@ -160,6 +160,9 @@ apis:
   - type: OpenAPI
     url: openapi/simplismart-training-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/simplismart-capability-edges.yml
+  name: Simplismart Business Capability Map
 - type: Website
   url: https://www.simplismart.ai/
 - type: DeveloperPortal

@@ -1,0 +1,71 @@
+slug: simplismart
+provider: Simplismart
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Electrical Components & Equipment
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Flux Training
+  spec_file: simplismart-flux-training-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: '''API endpoints for training, monitoring, and managing Flux models (AI image models)''; getFluxTrainingMetrics
+    ''Retrieve Flux training metrics'''
+  reason: Explicitly training, monitoring and managing AI models — AI/ML model lifecycle management.
+- tag: Flux
+  spec_file: simplismart-flux-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: POST /api/flux/train/ trainModel 'Train model with a dataset'; GET /api/flux/training_job/list/
+    'Retrieve a list of flux training jobs'
+  reason: Model training job submission and listing is AI/ML model lifecycle (MLOps) work.
+- tag: Llm
+  spec_file: simplismart-llm-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: GET /api/llm/training_job/list/ listTrainingJobs 'Retrieve a list of all training jobs'; schemas
+    TrainingJobList, TrainingJob
+  reason: Surface is LLM training job inventory, i.e. AI/ML model lifecycle management; thin but unambiguous
+    in domain.
+- tag: Chat Completion
+  spec_file: simplismart-chat-completion-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /chat/completions createChatCompletion70B 'Create chat completion with Llama 70B'
+  reason: Operation invokes a hosted LLM for inference; the closest honest capability is AI/ML model lifecycle
+    and serving under Information & Data Management. Not an industry-specific business function.
+- tag: Model
+  spec_file: simplismart-model-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /model/infer/flux generateImage 'Generate images using the Flux model'
+  reason: Generative model inference endpoint; maps to AI management rather than any marketing/content
+    capability since it is raw model invocation.
+- tag: Speech to Text
+  spec_file: simplismart-speech-to-text-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /model/infer/whisper transcribeAudioV3 'Transcribe or translate audio using Whisper Large
+    V3'
+  reason: Whisper model inference for transcription — an AI model service, best placed under Artificial
+    Intelligence Management.
