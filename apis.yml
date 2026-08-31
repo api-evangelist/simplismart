@@ -111,7 +111,7 @@ apis:
   humanURL: https://docs.simplismart.ai/api-reference/introduction
   baseURL: https://api.simplismart.live
   tags:
-  - LLM
+  - Llm
   tags_raw:
   - Llm
   properties:
