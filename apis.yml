@@ -87,16 +87,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/simplismart-chat-completion-api-openapi.yml
-- aid: simplismart:simplismart-flux-api
-  name: Simplismart Flux API
-  description: The Flux API from Simplismart — 2 operation(s) for flux.
-  humanURL: https://docs.simplismart.ai/api-reference/introduction
-  baseURL: https://api.simplismart.live
-  tags:
-  - Flux
-  properties:
-  - type: OpenAPI
-    url: openapi/simplismart-flux-api-openapi.yml
 - aid: simplismart:simplismart-flux-training-api
   name: Simplismart Flux Training API
   description: Flux model training endpoints
