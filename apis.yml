@@ -83,6 +83,8 @@ apis:
   humanURL: https://docs.simplismart.ai/api-reference/introduction
   baseURL: https://api.simplismart.live
   tags:
+  - Chat Completions
+  tags_raw:
   - Chat Completion
   properties:
   - type: OpenAPI
