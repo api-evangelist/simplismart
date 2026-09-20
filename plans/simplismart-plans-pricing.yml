@@ -10,6 +10,13 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: developer-api
 pricing_basis: per-call
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: Deploy Simplismart in your private cloud, on-premises data center, or regulated environment
+    without compromising on performance, scalability, or security.
+  managed_tier: Dedicated Deployments
 published: true
 note: Page mixes per-token/per-image/per-audio-minute API pricing with dedicated GPU hourly rates; BYOC/on-prem
   and training deployments are custom/contact. GPU-hour table appears twice (dedicated and training) with
