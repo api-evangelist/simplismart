@@ -1,0 +1,30 @@
+# Front Door AI Index — simplismart — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: simplismart
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.simplismart.ai
+  final_host: www.simplismart.ai
+  ownership: own
+  owner: simplismart
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 13
+  host_score: 13
+  density: 23.42
+  words: 555
+  tiers:
+    agentic: 10
+    core: 3
+    model: 0
+  ambiguous: 12
+  top_terms:
+    agent: 12
+    inference: 7
+    fine-tune: 3
+    AI: 1
+    LLMs: 1
+    gen ai: 1

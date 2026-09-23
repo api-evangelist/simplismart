@@ -1,15 +1,15 @@
 openapi: 3.2.0
 info:
-  title: Simplismart Llm API
+  title: Simplismart Training Suite Llm API
+  description: API for managing training jobs in the Simplismart training suite.
   version: 1.0.0
-  description: 'Operations tagged Llm across 2 of this provider''s published API definitions: simplismart-job-by-request-openapi.yml, simplismart-llm-jobs-list-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://training-suite.simplismart.ai
   description: Simplismart Training Suite API
 security:
 - BearerAuth: []
 tags:
-- name: Llm
+- name: LLM
 paths:
   /api/llm/training_job/list/:
     get:
@@ -72,19 +72,9 @@ paths:
                     type: string
                     example: An unexpected error occurred. Please try again later.
       tags:
-      - Llm
-    servers:
-    - url: https://training-suite.simplismart.ai
-      description: Simplismart Training Suite API
+      - LLM
 components:
   schemas:
-    TrainingJobList:
-      type: object
-      properties:
-        training_jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingJob'
     TrainingJob:
       type: object
       properties:
@@ -110,11 +100,15 @@ components:
           type: string
           format: date-time
           description: Timestamp when the training job was last updated.
+    TrainingJobList:
+      type: object
+      properties:
+        training_jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingJob'
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-x-refined-from:
-- simplismart-job-by-request-openapi.yml
-- simplismart-llm-jobs-list-openapi.yml

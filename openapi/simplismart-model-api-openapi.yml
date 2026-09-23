@@ -12,9 +12,7 @@ paths:
   /model/infer/flux:
     post:
       summary: Generate images using the Flux model
-      description: 'This endpoint generates images based on a prompt using the Flux model, with optional parameters for customization.
-
-        '
+      description: This endpoint generates images based on a prompt using the Flux model, with optional parameters for customization.
       operationId: generateImage
       parameters:
       - in: header

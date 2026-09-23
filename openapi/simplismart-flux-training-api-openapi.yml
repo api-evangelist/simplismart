@@ -199,13 +199,6 @@ paths:
           description: Internal server error while retrieving the metrics.
 components:
   schemas:
-    FluxMlflowMetricsResponse:
-      type: object
-      properties:
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/FluxMetricEntry'
     GetFluxTrainingJobResponse:
       type: object
       properties:
@@ -240,29 +233,6 @@ components:
         output_model:
           type: string
           description: Path to the trained model output (when completed)
-    FluxMetricEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Name of the metric
-        value:
-          type: number
-          description: Value of the metric
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp when the metric was recorded
-        step:
-          type: integer
-          description: Training step at which the metric was recorded
-    ListFluxTrainingJobsResponse:
-      type: object
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/FluxTrainingJobSummary'
     FluxTrainingJobResponse:
       type: object
       properties:
@@ -303,6 +273,36 @@ components:
         steps:
           type: string
           description: Number of training steps configured
+    ListFluxTrainingJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/FluxTrainingJobSummary'
+    FluxMetricEntry:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Name of the metric
+        value:
+          type: number
+          description: Value of the metric
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the metric was recorded
+        step:
+          type: integer
+          description: Training step at which the metric was recorded
+    FluxMlflowMetricsResponse:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/FluxMetricEntry'
   securitySchemes:
     BearerAuth:
       type: http

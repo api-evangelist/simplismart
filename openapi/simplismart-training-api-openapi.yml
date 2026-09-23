@@ -208,165 +208,6 @@ paths:
           description: Internal server error while retrieving the metrics.
 components:
   schemas:
-    ModelDetails:
-      type: object
-      properties:
-        base_model:
-          type: string
-          description: Base model identifier (e.g., HuggingFace model path)
-        ownership:
-          type: string
-          enum:
-          - public
-          - private
-          description: Whether the model is publicly accessible or private
-        source_type:
-          type: string
-          enum:
-          - hf
-          - s3
-          - local
-          description: Source type for the base model
-        model_type:
-          type: string
-          enum:
-          - llm
-          - vlm
-          description: Type of model (Language Model or Vision-Language Model)
-        quantization:
-          type: object
-          properties:
-            quant_bits:
-              type: integer
-              enum:
-              - 4
-              - 8
-              - 16
-              description: Quantization bit precision
-    TrainingJobResponse:
-      type: object
-      properties:
-        request_id:
-          type: string
-          description: Unique identifier for the training job request
-        status:
-          type: string
-          description: Initial status of the training job
-          enum:
-          - QUEUED
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - CANCELED
-        message:
-          type: string
-          description: Additional information about the job submission
-        experiment_name:
-          type: string
-          description: Name of the training experiment
-    TrainConfig:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - sft
-          - dpo
-          - ppo
-          description: Training type (Supervised Fine-Tuning, Direct Preference Optimization, Proximal Policy Optimization)
-        torch_dtype:
-          type: string
-          enum:
-          - float16
-          - bfloat16
-          - float32
-          description: PyTorch data type for training
-        task_type:
-          type: string
-          enum:
-          - causal_lm
-          - seq2seq
-          description: Task type for the model
-        train_type:
-          type: string
-          enum:
-          - lora
-          - qlora
-          - full
-          description: Training method (LoRA, QLoRA, or Full fine-tuning)
-        tuner_backend:
-          type: string
-          description: Backend used for parameter-efficient fine-tuning
-        hyperparameters:
-          type: object
-          properties:
-            num_epochs:
-              type: integer
-              description: Number of training epochs
-            per_device_train_batch_size:
-              type: integer
-              description: Batch size per device for training
-            per_device_eval_batch_size:
-              type: integer
-              description: Batch size per device for evaluation
-            gradient_checkpointing:
-              type: boolean
-              description: Whether to use gradient checkpointing for memory efficiency
-            save_steps:
-              type: integer
-              description: Save checkpoint every N steps
-            save_total_limit:
-              type: integer
-              description: Maximum number of checkpoints to keep
-            eval_steps:
-              type: integer
-              description: Evaluate model every N steps
-            logging_steps:
-              type: integer
-              description: Log metrics every N steps
-            learning_rate:
-              type: number
-              description: Learning rate for optimization
-            dataloader_num_workers:
-              type: integer
-              description: Number of workers for data loading
-        adapter_config:
-          type: object
-          properties:
-            r:
-              type: integer
-              description: LoRA rank parameter
-            alpha:
-              type: integer
-              description: LoRA alpha parameter for scaling
-            dropout:
-              type: number
-              description: Dropout rate for adapter layers
-            targets:
-              type: array
-              items:
-                type: string
-              description: Target modules for applying adapters
-        distributed:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - ddp
-              - fsdp
-              - deepspeed
-              description: Distributed training strategy
-    ListTrainingJobsResponse:
-      type: object
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingJobSummary'
-        total_count:
-          type: integer
-          description: Total number of training jobs
     DatasetDetails:
       type: object
       properties:
@@ -460,86 +301,130 @@ components:
         progress:
           type: number
           description: Progress percentage of the training job (0-100)
-    InfraConfig:
+    TrainConfig:
       type: object
       properties:
-        gpu_type:
+        type:
           type: string
           enum:
-          - h100
-          - a100
-          - a10g
-          - v100
-          - t4
-          description: Type of GPU to use for training
-        gpu_count:
-          type: integer
-          minimum: 1
-          description: Number of GPUs per node
-        infra_type:
+          - sft
+          - dpo
+          - ppo
+          description: Training type (Supervised Fine-Tuning, Direct Preference Optimization, Proximal Policy Optimization)
+        torch_dtype:
           type: string
-          description: Infrastructure provider type
-        node_count:
-          type: integer
-          minimum: 1
-          description: Number of compute nodes for distributed training
-    GetTrainingJobResponse:
+          enum:
+          - float16
+          - bfloat16
+          - float32
+          description: PyTorch data type for training
+        task_type:
+          type: string
+          enum:
+          - causal_lm
+          - seq2seq
+          description: Task type for the model
+        train_type:
+          type: string
+          enum:
+          - lora
+          - qlora
+          - full
+          description: Training method (LoRA, QLoRA, or Full fine-tuning)
+        tuner_backend:
+          type: string
+          description: Backend used for parameter-efficient fine-tuning
+        hyperparameters:
+          type: object
+          properties:
+            num_epochs:
+              type: integer
+              description: Number of training epochs
+            per_device_train_batch_size:
+              type: integer
+              description: Batch size per device for training
+            per_device_eval_batch_size:
+              type: integer
+              description: Batch size per device for evaluation
+            gradient_checkpointing:
+              type: boolean
+              description: Whether to use gradient checkpointing for memory efficiency
+            save_steps:
+              type: integer
+              description: Save checkpoint every N steps
+            save_total_limit:
+              type: integer
+              description: Maximum number of checkpoints to keep
+            eval_steps:
+              type: integer
+              description: Evaluate model every N steps
+            logging_steps:
+              type: integer
+              description: Log metrics every N steps
+            learning_rate:
+              type: number
+              description: Learning rate for optimization
+            dataloader_num_workers:
+              type: integer
+              description: Number of workers for data loading
+        adapter_config:
+          type: object
+          properties:
+            r:
+              type: integer
+              description: LoRA rank parameter
+            alpha:
+              type: integer
+              description: LoRA alpha parameter for scaling
+            dropout:
+              type: number
+              description: Dropout rate for adapter layers
+            targets:
+              type: array
+              items:
+                type: string
+              description: Target modules for applying adapters
+        distributed:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - ddp
+              - fsdp
+              - deepspeed
+              description: Distributed training strategy
+    MetricsResponse:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricEntry'
+        request_id:
+          type: string
+          description: Training job request ID
+    TrainingJobResponse:
       type: object
       properties:
         request_id:
           type: string
           description: Unique identifier for the training job request
-        experiment_name:
-          type: string
-          description: Name of the training experiment
         status:
           type: string
-          description: Current status of the training job
+          description: Initial status of the training job
           enum:
           - QUEUED
           - RUNNING
           - COMPLETED
           - FAILED
           - CANCELED
-        created_at:
+        message:
           type: string
-          format: date-time
-          description: Timestamp when the job was created
-        updated_at:
+          description: Additional information about the job submission
+        experiment_name:
           type: string
-          format: date-time
-          description: Timestamp when the job was last updated
-        started_at:
-          type: string
-          format: date-time
-          description: Timestamp when the job started running
-          nullable: true
-        completed_at:
-          type: string
-          format: date-time
-          description: Timestamp when the job completed
-          nullable: true
-        progress:
-          type: number
-          description: Progress percentage of the training job (0-100)
-        dataset_config:
-          $ref: '#/components/schemas/DatasetConfig'
-        model_details:
-          $ref: '#/components/schemas/ModelDetails'
-        train_config:
-          $ref: '#/components/schemas/TrainConfig'
-        dataset_details:
-          $ref: '#/components/schemas/DatasetDetails'
-        infra_config:
-          $ref: '#/components/schemas/InfraConfig'
-        output_model_path:
-          type: string
-          description: Path to the trained model output (when completed)
-          nullable: true
-        error_message:
-          type: string
-          description: Error message if the job failed
-          nullable: true
+          description: Name of the training experiment
     DatasetConfig:
       type: object
       properties:
@@ -599,16 +484,131 @@ components:
         epoch:
           type: number
           description: Training epoch at which the metric was recorded
-    MetricsResponse:
+    ListTrainingJobsResponse:
       type: object
       properties:
-        metrics:
+        jobs:
           type: array
           items:
-            $ref: '#/components/schemas/MetricEntry'
+            $ref: '#/components/schemas/TrainingJobSummary'
+        total_count:
+          type: integer
+          description: Total number of training jobs
+    GetTrainingJobResponse:
+      type: object
+      properties:
         request_id:
           type: string
-          description: Training job request ID
+          description: Unique identifier for the training job request
+        experiment_name:
+          type: string
+          description: Name of the training experiment
+        status:
+          type: string
+          description: Current status of the training job
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELED
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was last updated
+        started_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job started running
+          nullable: true
+        completed_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job completed
+          nullable: true
+        progress:
+          type: number
+          description: Progress percentage of the training job (0-100)
+        dataset_config:
+          $ref: '#/components/schemas/DatasetConfig'
+        model_details:
+          $ref: '#/components/schemas/ModelDetails'
+        train_config:
+          $ref: '#/components/schemas/TrainConfig'
+        dataset_details:
+          $ref: '#/components/schemas/DatasetDetails'
+        infra_config:
+          $ref: '#/components/schemas/InfraConfig'
+        output_model_path:
+          type: string
+          description: Path to the trained model output (when completed)
+          nullable: true
+        error_message:
+          type: string
+          description: Error message if the job failed
+          nullable: true
+    InfraConfig:
+      type: object
+      properties:
+        gpu_type:
+          type: string
+          enum:
+          - h100
+          - a100
+          - a10g
+          - v100
+          - t4
+          description: Type of GPU to use for training
+        gpu_count:
+          type: integer
+          minimum: 1
+          description: Number of GPUs per node
+        infra_type:
+          type: string
+          description: Infrastructure provider type
+        node_count:
+          type: integer
+          minimum: 1
+          description: Number of compute nodes for distributed training
+    ModelDetails:
+      type: object
+      properties:
+        base_model:
+          type: string
+          description: Base model identifier (e.g., HuggingFace model path)
+        ownership:
+          type: string
+          enum:
+          - public
+          - private
+          description: Whether the model is publicly accessible or private
+        source_type:
+          type: string
+          enum:
+          - hf
+          - s3
+          - local
+          description: Source type for the base model
+        model_type:
+          type: string
+          enum:
+          - llm
+          - vlm
+          description: Type of model (Language Model or Vision-Language Model)
+        quantization:
+          type: object
+          properties:
+            quant_bits:
+              type: integer
+              enum:
+              - 4
+              - 8
+              - 16
+              description: Quantization bit precision
   securitySchemes:
     BearerAuth:
       type: http
