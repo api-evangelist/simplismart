@@ -208,99 +208,6 @@ paths:
           description: Internal server error while retrieving the metrics.
 components:
   schemas:
-    DatasetDetails:
-      type: object
-      properties:
-        dataset_name:
-          type: string
-          description: Name of the dataset
-        dataset_path:
-          type: string
-          description: Path or URI to the dataset
-        dataset_description:
-          type: string
-          description: Description of the dataset
-        dataset_type:
-          type: string
-          enum:
-          - jsonl
-          - csv
-          - parquet
-          description: File format of the dataset
-        dataset_format:
-          type: string
-          enum:
-          - sharegpt
-          - alpaca
-          - instruction
-          description: Data format/schema of the dataset
-        source_type:
-          type: string
-          enum:
-          - s3
-          - gcs
-          - local
-          - hf
-          description: Source location type
-        ownership:
-          type: string
-          enum:
-          - public
-          - private
-          description: Whether the dataset is publicly accessible or private
-        secret_id:
-          type: string
-          description: ID of the secret containing credentials for private datasets
-          nullable: true
-        region:
-          type: string
-          description: Cloud region for the dataset storage
-          nullable: true
-    TrainingJobSummary:
-      type: object
-      properties:
-        request_id:
-          type: string
-          description: Unique identifier for the training job request
-        experiment_name:
-          type: string
-          description: Name of the training experiment
-        status:
-          type: string
-          description: Current status of the training job
-          enum:
-          - QUEUED
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - CANCELED
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp when the job was created
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp when the job was last updated
-        model_type:
-          type: string
-          description: Type of model being trained (LLM or VLM)
-          enum:
-          - llm
-          - vlm
-        base_model:
-          type: string
-          description: Base model used for training
-        train_type:
-          type: string
-          description: Type of training (LoRA, QLoRA, Full)
-          enum:
-          - lora
-          - qlora
-          - full
-        progress:
-          type: number
-          description: Progress percentage of the training job (0-100)
     TrainConfig:
       type: object
       properties:
@@ -394,16 +301,99 @@ components:
               - fsdp
               - deepspeed
               description: Distributed training strategy
-    MetricsResponse:
+    DatasetDetails:
       type: object
       properties:
-        metrics:
+        dataset_name:
+          type: string
+          description: Name of the dataset
+        dataset_path:
+          type: string
+          description: Path or URI to the dataset
+        dataset_description:
+          type: string
+          description: Description of the dataset
+        dataset_type:
+          type: string
+          enum:
+          - jsonl
+          - csv
+          - parquet
+          description: File format of the dataset
+        dataset_format:
+          type: string
+          enum:
+          - sharegpt
+          - alpaca
+          - instruction
+          description: Data format/schema of the dataset
+        source_type:
+          type: string
+          enum:
+          - s3
+          - gcs
+          - local
+          - hf
+          description: Source location type
+        ownership:
+          type: string
+          enum:
+          - public
+          - private
+          description: Whether the dataset is publicly accessible or private
+        secret_id:
+          type: string
+          description: ID of the secret containing credentials for private datasets
+          nullable: true
+        region:
+          type: string
+          description: Cloud region for the dataset storage
+          nullable: true
+    ListTrainingJobsResponse:
+      type: object
+      properties:
+        jobs:
           type: array
           items:
-            $ref: '#/components/schemas/MetricEntry'
-        request_id:
+            $ref: '#/components/schemas/TrainingJobSummary'
+        total_count:
+          type: integer
+          description: Total number of training jobs
+    ModelDetails:
+      type: object
+      properties:
+        base_model:
           type: string
-          description: Training job request ID
+          description: Base model identifier (e.g., HuggingFace model path)
+        ownership:
+          type: string
+          enum:
+          - public
+          - private
+          description: Whether the model is publicly accessible or private
+        source_type:
+          type: string
+          enum:
+          - hf
+          - s3
+          - local
+          description: Source type for the base model
+        model_type:
+          type: string
+          enum:
+          - llm
+          - vlm
+          description: Type of model (Language Model or Vision-Language Model)
+        quantization:
+          type: object
+          properties:
+            quant_bits:
+              type: integer
+              enum:
+              - 4
+              - 8
+              - 16
+              description: Quantization bit precision
     TrainingJobResponse:
       type: object
       properties:
@@ -425,46 +415,16 @@ components:
         experiment_name:
           type: string
           description: Name of the training experiment
-    DatasetConfig:
+    MetricsResponse:
       type: object
       properties:
-        preprocessing:
-          type: object
-          properties:
-            lazy_tokenize:
-              type: boolean
-              description: Whether to tokenize lazily during training
-            streaming:
-              type: boolean
-              description: Whether to use streaming mode for large datasets
-            prompt:
-              type: object
-              properties:
-                system:
-                  type: string
-                  nullable: true
-                  description: System prompt to prepend to inputs
-                max_length:
-                  type: integer
-                  description: Maximum token length for sequences
-                template:
-                  type: string
-                  nullable: true
-                  description: Custom prompt template
-        split:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - random
-              - sequential
-              description: Type of dataset split
-            ratios:
-              type: array
-              items:
-                type: number
-              description: Split ratios for train/validation/test
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricEntry'
+        request_id:
+          type: string
+          description: Training job request ID
     MetricEntry:
       type: object
       properties:
@@ -484,16 +444,74 @@ components:
         epoch:
           type: number
           description: Training epoch at which the metric was recorded
-    ListTrainingJobsResponse:
+    InfraConfig:
       type: object
       properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrainingJobSummary'
-        total_count:
+        gpu_type:
+          type: string
+          enum:
+          - h100
+          - a100
+          - a10g
+          - v100
+          - t4
+          description: Type of GPU to use for training
+        gpu_count:
           type: integer
-          description: Total number of training jobs
+          minimum: 1
+          description: Number of GPUs per node
+        infra_type:
+          type: string
+          description: Infrastructure provider type
+        node_count:
+          type: integer
+          minimum: 1
+          description: Number of compute nodes for distributed training
+    TrainingJobSummary:
+      type: object
+      properties:
+        request_id:
+          type: string
+          description: Unique identifier for the training job request
+        experiment_name:
+          type: string
+          description: Name of the training experiment
+        status:
+          type: string
+          description: Current status of the training job
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELED
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was last updated
+        model_type:
+          type: string
+          description: Type of model being trained (LLM or VLM)
+          enum:
+          - llm
+          - vlm
+        base_model:
+          type: string
+          description: Base model used for training
+        train_type:
+          type: string
+          description: Type of training (LoRA, QLoRA, Full)
+          enum:
+          - lora
+          - qlora
+          - full
+        progress:
+          type: number
+          description: Progress percentage of the training job (0-100)
     GetTrainingJobResponse:
       type: object
       properties:
@@ -551,64 +569,46 @@ components:
           type: string
           description: Error message if the job failed
           nullable: true
-    InfraConfig:
+    DatasetConfig:
       type: object
       properties:
-        gpu_type:
-          type: string
-          enum:
-          - h100
-          - a100
-          - a10g
-          - v100
-          - t4
-          description: Type of GPU to use for training
-        gpu_count:
-          type: integer
-          minimum: 1
-          description: Number of GPUs per node
-        infra_type:
-          type: string
-          description: Infrastructure provider type
-        node_count:
-          type: integer
-          minimum: 1
-          description: Number of compute nodes for distributed training
-    ModelDetails:
-      type: object
-      properties:
-        base_model:
-          type: string
-          description: Base model identifier (e.g., HuggingFace model path)
-        ownership:
-          type: string
-          enum:
-          - public
-          - private
-          description: Whether the model is publicly accessible or private
-        source_type:
-          type: string
-          enum:
-          - hf
-          - s3
-          - local
-          description: Source type for the base model
-        model_type:
-          type: string
-          enum:
-          - llm
-          - vlm
-          description: Type of model (Language Model or Vision-Language Model)
-        quantization:
+        preprocessing:
           type: object
           properties:
-            quant_bits:
-              type: integer
+            lazy_tokenize:
+              type: boolean
+              description: Whether to tokenize lazily during training
+            streaming:
+              type: boolean
+              description: Whether to use streaming mode for large datasets
+            prompt:
+              type: object
+              properties:
+                system:
+                  type: string
+                  nullable: true
+                  description: System prompt to prepend to inputs
+                max_length:
+                  type: integer
+                  description: Maximum token length for sequences
+                template:
+                  type: string
+                  nullable: true
+                  description: Custom prompt template
+        split:
+          type: object
+          properties:
+            type:
+              type: string
               enum:
-              - 4
-              - 8
-              - 16
-              description: Quantization bit precision
+              - random
+              - sequential
+              description: Type of dataset split
+            ratios:
+              type: array
+              items:
+                type: number
+              description: Split ratios for train/validation/test
   securitySchemes:
     BearerAuth:
       type: http

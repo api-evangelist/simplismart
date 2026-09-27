@@ -199,6 +199,76 @@ paths:
           description: Internal server error while retrieving the metrics.
 components:
   schemas:
+    FluxTrainingJobResponse:
+      type: object
+      properties:
+        lora_id:
+          type: string
+          description: Unique identifier for the Flux training job
+        status:
+          type: string
+          description: Initial status of the training job
+        message:
+          type: string
+          description: Additional information about the job submission
+    ListFluxTrainingJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/FluxTrainingJobSummary'
+    FluxTrainingJobSummary:
+      type: object
+      properties:
+        lora_id:
+          type: string
+          description: Unique identifier for the Flux training job
+        name:
+          type: string
+          description: Name of the Flux training experiment
+        status:
+          type: string
+          description: Current status of the training job
+          enum:
+          - QUEUED
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - CANCELED
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the job was created
+        trigger_word:
+          type: string
+          description: The trigger word associated with generated images
+        steps:
+          type: string
+          description: Number of training steps configured
+    FluxMlflowMetricsResponse:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/FluxMetricEntry'
+    FluxMetricEntry:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Name of the metric
+        value:
+          type: number
+          description: Value of the metric
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the metric was recorded
+        step:
+          type: integer
+          description: Training step at which the metric was recorded
     GetFluxTrainingJobResponse:
       type: object
       properties:
@@ -233,76 +303,6 @@ components:
         output_model:
           type: string
           description: Path to the trained model output (when completed)
-    FluxTrainingJobResponse:
-      type: object
-      properties:
-        lora_id:
-          type: string
-          description: Unique identifier for the Flux training job
-        status:
-          type: string
-          description: Initial status of the training job
-        message:
-          type: string
-          description: Additional information about the job submission
-    FluxTrainingJobSummary:
-      type: object
-      properties:
-        lora_id:
-          type: string
-          description: Unique identifier for the Flux training job
-        name:
-          type: string
-          description: Name of the Flux training experiment
-        status:
-          type: string
-          description: Current status of the training job
-          enum:
-          - QUEUED
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - CANCELED
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp when the job was created
-        trigger_word:
-          type: string
-          description: The trigger word associated with generated images
-        steps:
-          type: string
-          description: Number of training steps configured
-    ListFluxTrainingJobsResponse:
-      type: object
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/FluxTrainingJobSummary'
-    FluxMetricEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Name of the metric
-        value:
-          type: number
-          description: Value of the metric
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp when the metric was recorded
-        step:
-          type: integer
-          description: Training step at which the metric was recorded
-    FluxMlflowMetricsResponse:
-      type: object
-      properties:
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/FluxMetricEntry'
   securitySchemes:
     BearerAuth:
       type: http

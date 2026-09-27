@@ -279,6 +279,69 @@ components:
           type: number
           description: Maximum duration to process
           default: 30
+    WhisperV3Response:
+      type: object
+      required:
+      - transcription
+      - request_time
+      - language
+      properties:
+        transcription:
+          type: array
+          items:
+            type: string
+          description: Array of transcribed text segments
+          example:
+          - Hello, this is a test.
+          - The audio quality is good.
+        segments:
+          type: array
+          items:
+            type: object
+            required:
+            - start
+            - end
+            - text
+            properties:
+              start:
+                type: number
+                description: Start time of segment (seconds)
+                example: 0
+              end:
+                type: number
+                description: End time of segment (seconds)
+                example: 2.5
+              text:
+                type: string
+                description: Transcribed text
+                example: Hello, this is a test.
+              words:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - word
+                  - start
+                  - end
+                  properties:
+                    word:
+                      type: string
+                      example: Hello
+                    start:
+                      type: number
+                      example: 0
+                    end:
+                      type: number
+                      example: 0.5
+                description: Word-level timing information
+        request_time:
+          type: number
+          description: Total processing time in seconds
+          example: 2.5
+        language:
+          type: string
+          description: Detected or specified language
+          example: en
     WhisperV3Request:
       type: object
       required:
@@ -401,69 +464,6 @@ components:
           description: Maximum duration to process (seconds)
           default: 30
           minimum: 0
-    WhisperV3Response:
-      type: object
-      required:
-      - transcription
-      - request_time
-      - language
-      properties:
-        transcription:
-          type: array
-          items:
-            type: string
-          description: Array of transcribed text segments
-          example:
-          - Hello, this is a test.
-          - The audio quality is good.
-        segments:
-          type: array
-          items:
-            type: object
-            required:
-            - start
-            - end
-            - text
-            properties:
-              start:
-                type: number
-                description: Start time of segment (seconds)
-                example: 0
-              end:
-                type: number
-                description: End time of segment (seconds)
-                example: 2.5
-              text:
-                type: string
-                description: Transcribed text
-                example: Hello, this is a test.
-              words:
-                type: array
-                items:
-                  type: object
-                  required:
-                  - word
-                  - start
-                  - end
-                  properties:
-                    word:
-                      type: string
-                      example: Hello
-                    start:
-                      type: number
-                      example: 0
-                    end:
-                      type: number
-                      example: 0.5
-                description: Word-level timing information
-        request_time:
-          type: number
-          description: Total processing time in seconds
-          example: 2.5
-        language:
-          type: string
-          description: Detected or specified language
-          example: en
   securitySchemes:
     BearerAuth:
       type: http
