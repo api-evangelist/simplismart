@@ -103,6 +103,46 @@ paths:
       description: Production LLM Proxy Server
 components:
   schemas:
+    WhisperV2Response:
+      type: object
+      properties:
+        transcription:
+          type: array
+          items:
+            type: string
+          description: Array of transcribed text segments
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: number
+                description: Start time of segment
+              end:
+                type: number
+                description: End time of segment
+              text:
+                type: string
+                description: Transcribed text
+              words:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    word:
+                      type: string
+                    start:
+                      type: number
+                    end:
+                      type: number
+                description: Word-level timing information
+        request_time:
+          type: number
+          description: Total processing time in seconds
+        language:
+          type: string
+          description: Detected or specified language
     WhisperV2Request:
       type: object
       required:
@@ -239,46 +279,6 @@ components:
         status:
           type: integer
           description: Error status code
-    WhisperV2Response:
-      type: object
-      properties:
-        transcription:
-          type: array
-          items:
-            type: string
-          description: Array of transcribed text segments
-        segments:
-          type: array
-          items:
-            type: object
-            properties:
-              start:
-                type: number
-                description: Start time of segment
-              end:
-                type: number
-                description: End time of segment
-              text:
-                type: string
-                description: Transcribed text
-              words:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    word:
-                      type: string
-                    start:
-                      type: number
-                    end:
-                      type: number
-                description: Word-level timing information
-        request_time:
-          type: number
-          description: Total processing time in seconds
-        language:
-          type: string
-          description: Detected or specified language
     WhisperV3Response:
       type: object
       required:
