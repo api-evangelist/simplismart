@@ -10,6 +10,7 @@ checked:
 - https://registry.npmjs.org
 - https://repo1.maven.org/maven2
 - https://rubygems.org/api/v1
+- hugging-face/integrations/hugging-face-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Microsoft Azure Marketplace
@@ -78,6 +79,32 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
   first_seen: '2026-10-18'
+- partner_name: Hugging Face (hugging-face-hub)
+  partner: hugging-face
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: hugging-face-hub
+  evidence: https://huggingface.co/Simplismart
+  mirror_of: hugging-face/integrations/hugging-face-integration-edges.yml
+  apps:
+  - Simplismart/sarvam-m-fp8-dynamic
+  - Simplismart/Dobby-Mini-Unhinged-Llama-3.1-8B_GGUF
+  - Simplismart/orpheus-3b-0.1-ft
+  - Simplismart/BioGPT-Large
+  - Simplismart/Llama-3.1-8B-Lexi-Uncensored-V2-NVFP4
+  - Simplismart/gemma-4-31B-it-sharded
+  - Simplismart/gemma-4-31B-it
+  - Simplismart/InternVL3_5-38B-FP8-Dynamic
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Hugging Face Hub models
+  badges:
+  - Verified publisher (Hugging Face verified organisation)
 source:
 - https://registry.npmjs.org
 - https://pypi.org/pypi
