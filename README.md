@@ -64,6 +64,141 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Simplismart is a company surfaced as a portfolio company of accel and added to the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.
+Simplismart is an AI inference and model-deployment platform that lets teams run, fine-tune, and self-host generative AI models on optimized GPU infrastructure. It offers OpenAI-compatible LLM chat inference (Llama, Qwen, Gemma, Mixtral, DeepSeek), Whisper speech-to-text transcription, and Flux image generation as shared or dedicated endpoints, plus a Training Suite for fine-tuning LLM/VLM and Flux models. A Model Suite handles model compilation, clusters (own-cloud EKS/Kubernetes / bring-your-own-compute), deployments with autoscaling, secrets, quotas, and observability (alerting and metric export to Datadog, New Relic, Prometheus). A Python SDK and `simplismart` CLI cover the full MLOps lifecycle. Simplismart is backed by Accel.
 
-Backed by: accel — https://www.simplismart.ai/
+**Areas:** Company · Artificial Intelligence · Machine Learning · Inference · LLM · Model Deployment · Fine-Tuning · MLOps · GPU · Speech-to-Text · Image Generation
+
+## Simplismart on APIs.io
+
+Everything profiled for Simplismart is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/simplismart/](https://apis.io/providers/simplismart/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [Simplismart Chat Completion API](https://apis.io/apis/simplismart/simplismart-chat-completion-api/) — Large Language Model chat completion services
+- [Simplismart Flux Training API](https://apis.io/apis/simplismart/simplismart-flux-training-api/) — Flux model training endpoints
+- [Simplismart Llm API](https://apis.io/apis/simplismart/simplismart-llm-api/) — The Llm API from Simplismart — 1 operation(s) for llm.
+- [Simplismart Metrics API](https://apis.io/apis/simplismart/simplismart-metrics-api/) — Performance and usage metrics for LLM requests
+- [Simplismart Model API](https://apis.io/apis/simplismart/simplismart-model-api/) — The Model API from Simplismart — 1 operation(s) for model.
+- [Simplismart Speech to Text API](https://apis.io/apis/simplismart/simplismart-speech-to-text-api/) — The Speech to Text API from Simplismart — 2 operation(s) for speech to text.
+- [Simplismart Training API](https://apis.io/apis/simplismart/simplismart-training-api/) — LLM/VLM model training endpoints
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [simplismart](https://apis.io/servers/simplismart/simplismart/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Simplismart Agentic Access](https://apis.io/agentic-access/simplismart/simplismart-agentic-access/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [DeepSeek R1 Distil Qwen-32B Chat Completion API](https://apis.io/collections/simplismart/open-simplismart-chat-completion-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Flux API](https://apis.io/collections/simplismart/open-simplismart-flux-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Flux Training API](https://apis.io/collections/simplismart/open-simplismart-flux-training-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Llm API](https://apis.io/collections/simplismart/open-simplismart-llm-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Metrics API](https://apis.io/collections/simplismart/open-simplismart-metrics-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Model API](https://apis.io/collections/simplismart/open-simplismart-model-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Speech to Text API](https://apis.io/collections/simplismart/open-simplismart-speech-to-text-api/)
+- [DeepSeek R1 Distil Qwen-32B Chat Completion Training API](https://apis.io/collections/simplismart/open-simplismart-training-api/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Simplismart Flux Dev Overlay](https://apis.io/overlays/simplismart/simplismart-flux-dev-overlay/)
+- [Simplismart Llm Training Overlay](https://apis.io/overlays/simplismart/simplismart-llm-training-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Simplismart Authentication](https://apis.io/security/simplismart/simplismart-authentication/)
+- [Simplismart Domain Security](https://apis.io/security/simplismart/simplismart-domain-security/)
+- [Simplismart Trust Center](https://apis.io/security/simplismart/simplismart-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Simplismart Plans Pricing](https://apis.io/plans/simplismart/simplismart-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.simplismart.ai/)
+- [Documentation](https://docs.simplismart.ai/overview)
+- [Getting started](https://docs.simplismart.ai/quickstart/inference)
+- [API reference](https://docs.simplismart.ai/api-reference/introduction)
+- [Pricing](https://www.simplismart.ai/pricing)
+- [Sign up](https://app.simplismart.ai/)
+- [Support](https://www.simplismart.ai/contact)
+- [Blog](https://www.simplismart.ai/blogs)
+- [Compliance](https://security.simplismart.ai/)
+- [Terms of service](https://www.simplismart.ai/terms-of-service)
+- [Privacy policy](https://www.simplismart.ai/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 57.0** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 53.4 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 80.4 |
+| Access clarity | 92.1 |
+
+**Agent readiness 25.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.3** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/simplismart/](https://apis.io/providers/simplismart/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Simplismart: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/simplismart/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
